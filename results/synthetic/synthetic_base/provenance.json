@@ -1,0 +1,20 @@
+{
+  "base_seed": 1000,
+  "config_hash": "5f2696fe7f343ae5",
+  "config_path": "configs/synthetic_base.yaml",
+  "created_at_utc": "2026-10-17T18:07:18Z",
+  "data_kind": "synthetic",
+  "environment": {
+    "hilreview_version": "0.1.0",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+    "python": "3.11.16"
+  },
+  "evidence_status": "SYNTHETIC: pipeline validation only, not evidence about real systems",
+  "experiment_name": "synthetic_base",
+  "git": {
+    "commit": "29ceb9c56281548a3d6907c4bc5cfc405bfb4c68",
+    "dirty": true
+  },
+  "replicates": 5
+}

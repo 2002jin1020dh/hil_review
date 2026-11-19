@@ -1,0 +1,6642 @@
+[
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9227421109902068,
+        "balanced_accuracy": 0.80580440988656,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9526898653797307,
+            "lo": 0.8852739626618555,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5312624007936508,
+            "lo": 0.2092584466871435,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04665846994535519,
+            "lo": 0.012885357251564918,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 49,
+          "fp": 22,
+          "n": 919,
+          "tn": 761,
+          "tp": 87
+        },
+        "f1": 0.710204081632653,
+        "fnr": 0.3602941176470588,
+        "fpr": 0.0280970625798212,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7981651376146789,
+        "recall": 0.6397058823529411,
+        "specificity": 0.9719029374201787
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 4,
+          "false_trigger": 6,
+          "missed_success": 1,
+          "true_no_trigger": 7,
+          "true_trigger": 6
+        },
+        "fst_count": 10,
+        "fst_rate": 0.4166666666666667,
+        "fst_rate_ci95": [
+          0.24467602609811764,
+          0.6116533413477124
+        ],
+        "fst_share_of_triggers": 0.625,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9205658324265505,
+        "balanced_accuracy": 0.789337765757644,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.951614202557084,
+            "lo": 0.879363794515205,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5693536750976065,
+            "lo": 0.25,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04226101288582559,
+            "lo": 0.00977783459420653,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 54,
+          "fp": 19,
+          "n": 919,
+          "tn": 764,
+          "tp": 82
+        },
+        "f1": 0.6919831223628693,
+        "fnr": 0.39705882352941174,
+        "fpr": 0.024265644955300127,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8118811881188119,
+        "recall": 0.6029411764705882,
+        "specificity": 0.9757343550446999
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 3,
+          "false_trigger": 5,
+          "missed_success": 1,
+          "true_no_trigger": 8,
+          "true_trigger": 7
+        },
+        "fst_count": 8,
+        "fst_rate": 0.3333333333333333,
+        "fst_rate_ci95": [
+          0.1797219032729775,
+          0.5329368316186824
+        ],
+        "fst_share_of_triggers": 0.5333333333333333,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 90,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.8609271523178809,
+        "value": 0.55
+      }
+    },
+    "budget": {
+      "k": 88,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 1.0,
+      "realized_keyframe_fraction": 1.0
+    },
+    "condition": "A_full_review",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.14138908575478384,
+      "human_time_s": 2576.046,
+      "human_time_s_capped": 2171.3540000000003,
+      "mean_s_per_episode": 29.273249999999997,
+      "median_s_per_episode": 20.2655,
+      "n_corrections": 399,
+      "n_episodes_reviewed": 88,
+      "n_keyframes_reviewed": 2822,
+      "n_time_capped": 2,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.9128440822111976,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "ebee328438bdfa51",
+      "model": "623b4b73bebe550c",
+      "selected": "7a841fb610a5d69d",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 1.0,
+    "label_counts": {
+      "ambiguous": 95,
+      "failure": 2302,
+      "human_labeled": 2822,
+      "invalid": 25,
+      "n_excluded": 120,
+      "n_total": 2847,
+      "n_trainable": 2727,
+      "no_label": 0,
+      "success": 425,
+      "vlm_labeled": 0
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "counts": {
+        "fn": 0,
+        "fp": 0,
+        "n": 2727,
+        "tn": 2302,
+        "tp": 425
+      },
+      "f1": 1.0,
+      "fnr": 0.0,
+      "fpr": 0.0,
+      "n": 2727,
+      "n_label_excluded": 0,
+      "n_ref_excluded": 95,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9831316464979831,
+      "balanced_accuracy": 0.981725904857025,
+      "counts": {
+        "fn": 8,
+        "fp": 38,
+        "n": 2727,
+        "tn": 2294,
+        "tp": 387
+      },
+      "f1": 0.9439024390243904,
+      "fnr": 0.020253164556962026,
+      "fpr": 0.016295025728987993,
+      "n": 2727,
+      "n_label_excluded": 95,
+      "n_ref_excluded": 0,
+      "precision": 0.9105882352941177,
+      "recall": 0.979746835443038,
+      "specificity": 0.983704974271012
+    },
+    "policy": "full",
+    "replicate": 0,
+    "selected_episodes": [
+      "syn0000",
+      "syn0001",
+      "syn0002",
+      "syn0003",
+      "syn0006",
+      "syn0007",
+      "syn0008",
+      "syn0009",
+      "syn0011",
+      "syn0012",
+      "syn0013",
+      "syn0016",
+      "syn0017",
+      "syn0019",
+      "syn0020",
+      "syn0021",
+      "syn0022",
+      "syn0023",
+      "syn0025",
+      "syn0027",
+      "syn0028",
+      "syn0032",
+      "syn0033",
+      "syn0034",
+      "syn0035",
+      "syn0036",
+      "syn0037",
+      "syn0038",
+      "syn0039",
+      "syn0040",
+      "syn0041",
+      "syn0046",
+      "syn0047",
+      "syn0048",
+      "syn0049",
+      "syn0051",
+      "syn0052",
+      "syn0053",
+      "syn0054",
+      "syn0055",
+      "syn0056",
+      "syn0057",
+      "syn0058",
+      "syn0059",
+      "syn0060",
+      "syn0063",
+      "syn0064",
+      "syn0066",
+      "syn0067",
+      "syn0070",
+      "syn0071",
+      "syn0072",
+      "syn0073",
+      "syn0074",
+      "syn0076",
+      "syn0077",
+      "syn0078",
+      "syn0079",
+      "syn0080",
+      "syn0081",
+      "syn0082",
+      "syn0083",
+      "syn0084",
+      "syn0085",
+      "syn0089",
+      "syn0090",
+      "syn0091",
+      "syn0093",
+      "syn0094",
+      "syn0095",
+      "syn0097",
+      "syn0098",
+      "syn0099",
+      "syn0100",
+      "syn0101",
+      "syn0103",
+      "syn0104",
+      "syn0106",
+      "syn0107",
+      "syn0108",
+      "syn0109",
+      "syn0112",
+      "syn0113",
+      "syn0114",
+      "syn0116",
+      "syn0117",
+      "syn0118",
+      "syn0119"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7715939824205544,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9496908936736876,
+            "lo": 0.8748631994683581,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6099440089585666,
+            "lo": 0.25729166666666664,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.039292737014508576,
+            "lo": 0.009137786254351611,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 59,
+          "fp": 18,
+          "n": 919,
+          "tn": 765,
+          "tp": 77
+        },
+        "f1": 0.6666666666666665,
+        "fnr": 0.4338235294117647,
+        "fpr": 0.022988505747126436,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8105263157894737,
+        "recall": 0.5661764705882353,
+        "specificity": 0.9770114942528736
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 2,
+          "false_trigger": 6,
+          "missed_success": 2,
+          "true_no_trigger": 7,
+          "true_trigger": 7
+        },
+        "fst_count": 8,
+        "fst_rate": 0.3333333333333333,
+        "fst_rate_ci95": [
+          0.1797219032729775,
+          0.5329368316186824
+        ],
+        "fst_share_of_triggers": 0.5333333333333333,
+        "mean_trigger_delay_keyframes": 0.14285714285714285,
+        "missed_success_rate": 0.18181818181818182,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9151251360174102,
+        "balanced_accuracy": 0.8225997295469911,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9437256851078437,
+            "lo": 0.8781702810410106,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.4878190584231423,
+            "lo": 0.14282738095238096,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.06880456213789546,
+            "lo": 0.02536546731638634,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 42,
+          "fp": 36,
+          "n": 919,
+          "tn": 747,
+          "tp": 94
+        },
+        "f1": 0.7067669172932332,
+        "fnr": 0.3088235294117647,
+        "fpr": 0.04597701149425287,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7230769230769231,
+        "recall": 0.6911764705882353,
+        "specificity": 0.9540229885057471
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 6,
+          "false_trigger": 8,
+          "missed_success": 1,
+          "true_no_trigger": 5,
+          "true_trigger": 4
+        },
+        "fst_count": 14,
+        "fst_rate": 0.5833333333333334,
+        "fst_rate_ci95": [
+          0.3883466586522876,
+          0.7553239739018824
+        ],
+        "fst_share_of_triggers": 0.7777777777777778,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 105,
+        "n_val": 584,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7640750670241286,
+        "value": 0.4
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.2515946137491141
+    },
+    "condition": "B_review25_random",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.13802816901408452,
+      "human_time_s": 474.1640000000001,
+      "human_time_s_capped": 474.1640000000001,
+      "mean_s_per_episode": 21.55290909090909,
+      "median_s_per_episode": 19.491500000000002,
+      "n_corrections": 98,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 710,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.66783661971831,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "df31ea91ca01ba75",
+      "model": "9875ba6d62799cb0",
+      "selected": "f779ef2d81412380",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 59,
+      "failure": 2201,
+      "human_labeled": 710,
+      "invalid": 25,
+      "n_excluded": 105,
+      "n_total": 2847,
+      "n_trainable": 2742,
+      "no_label": 21,
+      "success": 541,
+      "vlm_labeled": 2091
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9338070306656694,
+      "balanced_accuracy": 0.9244345242857219,
+      "counts": {
+        "fn": 37,
+        "fp": 140,
+        "n": 2674,
+        "tn": 2119,
+        "tp": 378
+      },
+      "f1": 0.8102893890675241,
+      "fnr": 0.0891566265060241,
+      "fpr": 0.0619743249225321,
+      "n": 2674,
+      "n_label_excluded": 53,
+      "n_ref_excluded": 95,
+      "precision": 0.7297297297297297,
+      "recall": 0.9108433734939759,
+      "specificity": 0.9380256750774679
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9172137126185266,
+      "balanced_accuracy": 0.9094174543190446,
+      "counts": {
+        "fn": 40,
+        "fp": 187,
+        "n": 2742,
+        "tn": 2161,
+        "tp": 354
+      },
+      "f1": 0.7572192513368984,
+      "fnr": 0.10152284263959391,
+      "fpr": 0.07964224872231687,
+      "n": 2742,
+      "n_label_excluded": 80,
+      "n_ref_excluded": 0,
+      "precision": 0.6543438077634011,
+      "recall": 0.8984771573604061,
+      "specificity": 0.9203577512776832
+    },
+    "policy": "random",
+    "replicate": 0,
+    "selected_episodes": [
+      "syn0072",
+      "syn0017",
+      "syn0097",
+      "syn0019",
+      "syn0104",
+      "syn0002",
+      "syn0080",
+      "syn0036",
+      "syn0057",
+      "syn0085",
+      "syn0090",
+      "syn0032",
+      "syn0038",
+      "syn0101",
+      "syn0011",
+      "syn0078",
+      "syn0094",
+      "syn0089",
+      "syn0076",
+      "syn0093",
+      "syn0116",
+      "syn0012"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9140369967355821,
+        "balanced_accuracy": 0.7763926451806776,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9476120252949377,
+            "lo": 0.8733793149112739,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6010897277736655,
+            "lo": 0.23594789952050382,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04568207520497596,
+            "lo": 0.013017477448453609,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 57,
+          "fp": 22,
+          "n": 919,
+          "tn": 761,
+          "tp": 79
+        },
+        "f1": 0.6666666666666667,
+        "fnr": 0.41911764705882354,
+        "fpr": 0.0280970625798212,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7821782178217822,
+        "recall": 0.5808823529411765,
+        "specificity": 0.9719029374201787
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 4,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 11,
+        "fst_rate": 0.44,
+        "fst_rate_ci95": [
+          0.26665638881067344,
+          0.6293266813020123
+        ],
+        "fst_share_of_triggers": 0.6470588235294118,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9183895538628944,
+        "balanced_accuracy": 0.8123638344226579,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9477287560623259,
+            "lo": 0.8839852080453584,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5108264607825934,
+            "lo": 0.17185989295580112,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.05687011105973824,
+            "lo": 0.018704392268270944,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 46,
+          "fp": 29,
+          "n": 919,
+          "tn": 754,
+          "tp": 90
+        },
+        "f1": 0.7058823529411765,
+        "fnr": 0.3382352941176471,
+        "fpr": 0.037037037037037035,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7563025210084033,
+        "recall": 0.6617647058823529,
+        "specificity": 0.9629629629629629
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.52,
+        "fst_rate_ci95": [
+          0.3349851695035678,
+          0.6996871404588704
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 99,
+        "n_val": 586,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.766016713091922,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.27604535790219703
+    },
+    "condition": "B_review25_lowconf",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.17329910141206675,
+      "human_time_s": 843.0379999999999,
+      "human_time_s_capped": 638.0889999999999,
+      "mean_s_per_episode": 38.31990909090909,
+      "median_s_per_episode": 25.7105,
+      "n_corrections": 135,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 779,
+      "n_time_capped": 1,
+      "n_time_missing": 0,
+      "s_per_keyframe": 1.0822053915275993,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "12d6fc6ccc931504",
+      "model": "e6926ba847610157",
+      "selected": "ea006d7605429d99",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 57,
+      "failure": 2221,
+      "human_labeled": 779,
+      "invalid": 25,
+      "n_excluded": 97,
+      "n_total": 2847,
+      "n_trainable": 2750,
+      "no_label": 15,
+      "success": 529,
+      "vlm_labeled": 2028
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9422718808193669,
+      "balanced_accuracy": 0.9335357111136489,
+      "counts": {
+        "fn": 33,
+        "fp": 122,
+        "n": 2685,
+        "tn": 2146,
+        "tp": 384
+      },
+      "f1": 0.8320693391115925,
+      "fnr": 0.07913669064748201,
+      "fpr": 0.053791887125220456,
+      "n": 2685,
+      "n_label_excluded": 42,
+      "n_ref_excluded": 95,
+      "precision": 0.758893280632411,
+      "recall": 0.920863309352518,
+      "specificity": 0.9462081128747796
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9298181818181818,
+      "balanced_accuracy": 0.9274992919852733,
+      "counts": {
+        "fn": 30,
+        "fp": 163,
+        "n": 2750,
+        "tn": 2191,
+        "tp": 366
+      },
+      "f1": 0.7913513513513513,
+      "fnr": 0.07575757575757576,
+      "fpr": 0.06924384027187766,
+      "n": 2750,
+      "n_label_excluded": 72,
+      "n_ref_excluded": 0,
+      "precision": 0.6918714555765595,
+      "recall": 0.9242424242424242,
+      "specificity": 0.9307561597281223
+    },
+    "policy": "low_confidence",
+    "replicate": 0,
+    "selected_episodes": [
+      "syn0079",
+      "syn0073",
+      "syn0097",
+      "syn0109",
+      "syn0116",
+      "syn0063",
+      "syn0009",
+      "syn0060",
+      "syn0023",
+      "syn0028",
+      "syn0067",
+      "syn0006",
+      "syn0002",
+      "syn0025",
+      "syn0051",
+      "syn0118",
+      "syn0080",
+      "syn0056",
+      "syn0103",
+      "syn0099",
+      "syn0066",
+      "syn0090"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7746318834047028,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9491726732769871,
+            "lo": 0.8759057902499906,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6,
+            "lo": 0.2520483193277311,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.040560244660137884,
+            "lo": 0.010327519379844961,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 58,
+          "fp": 19,
+          "n": 919,
+          "tn": 764,
+          "tp": 78
+        },
+        "f1": 0.6695278969957081,
+        "fnr": 0.4264705882352941,
+        "fpr": 0.024265644955300127,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8041237113402062,
+        "recall": 0.5735294117647058,
+        "specificity": 0.9757343550446999
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 2,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 7
+        },
+        "fst_count": 9,
+        "fst_rate": 0.375,
+        "fst_rate_ci95": [
+          0.21159367559548778,
+          0.5729003755732572
+        ],
+        "fst_share_of_triggers": 0.5625,
+        "mean_trigger_delay_keyframes": 0.14285714285714285,
+        "missed_success_rate": 0.18181818181818182,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7989350912778905,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.948667960408023,
+            "lo": 0.877656860616587,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5541467278307647,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.051921827936367744,
+            "lo": 0.0175197102425876,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 50,
+          "fp": 27,
+          "n": 919,
+          "tn": 756,
+          "tp": 86
+        },
+        "f1": 0.6907630522088354,
+        "fnr": 0.36764705882352944,
+        "fpr": 0.034482758620689655,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7610619469026548,
+        "recall": 0.6323529411764706,
+        "specificity": 0.9655172413793104
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 5
+        },
+        "fst_count": 12,
+        "fst_rate": 0.48,
+        "fst_rate_ci95": [
+          0.30031285954112974,
+          0.6650148304964322
+        ],
+        "fst_share_of_triggers": 0.7058823529411765,
+        "mean_trigger_delay_keyframes": 0.2,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 110,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7402234636871509,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.24415308291991494
+    },
+    "condition": "B_review25_fakesuccess",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.12772133526850507,
+      "human_time_s": 438.32599999999996,
+      "human_time_s_capped": 438.32599999999996,
+      "mean_s_per_episode": 19.923909090909092,
+      "median_s_per_episode": 18.532,
+      "n_corrections": 88,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 689,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.636177068214804,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "78cfd447e68a6a03",
+      "model": "b9a98eb94cbeafc3",
+      "selected": "a598eed019c5d2d4",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 69,
+      "failure": 2190,
+      "human_labeled": 689,
+      "invalid": 25,
+      "n_excluded": 117,
+      "n_total": 2847,
+      "n_trainable": 2730,
+      "no_label": 23,
+      "success": 540,
+      "vlm_labeled": 2110
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9320825515947467,
+      "balanced_accuracy": 0.9221480313196213,
+      "counts": {
+        "fn": 38,
+        "fp": 143,
+        "n": 2665,
+        "tn": 2110,
+        "tp": 374
+      },
+      "f1": 0.805166846071044,
+      "fnr": 0.09223300970873786,
+      "fpr": 0.06347092765201953,
+      "n": 2665,
+      "n_label_excluded": 62,
+      "n_ref_excluded": 95,
+      "precision": 0.723404255319149,
+      "recall": 0.9077669902912622,
+      "specificity": 0.9365290723479804
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9164835164835164,
+      "balanced_accuracy": 0.9087742881583771,
+      "counts": {
+        "fn": 40,
+        "fp": 188,
+        "n": 2730,
+        "tn": 2150,
+        "tp": 352
+      },
+      "f1": 0.7553648068669527,
+      "fnr": 0.10204081632653061,
+      "fpr": 0.08041060735671514,
+      "n": 2730,
+      "n_label_excluded": 92,
+      "n_ref_excluded": 0,
+      "precision": 0.6518518518518519,
+      "recall": 0.8979591836734694,
+      "specificity": 0.9195893926432849
+    },
+    "policy": "fake_success_priority",
+    "replicate": 0,
+    "selected_episodes": [
+      "syn0077",
+      "syn0037",
+      "syn0007",
+      "syn0011",
+      "syn0098",
+      "syn0082",
+      "syn0084",
+      "syn0099",
+      "syn0089",
+      "syn0041",
+      "syn0118",
+      "syn0083",
+      "syn0034",
+      "syn0048",
+      "syn0067",
+      "syn0090",
+      "syn0101",
+      "syn0017",
+      "syn0022",
+      "syn0057",
+      "syn0046",
+      "syn0039"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7746318834047028,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9500593976853349,
+            "lo": 0.8753928681578522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6041704136690647,
+            "lo": 0.24198726114649682,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.03957943909466965,
+            "lo": 0.010779509059198293,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 58,
+          "fp": 19,
+          "n": 919,
+          "tn": 764,
+          "tp": 78
+        },
+        "f1": 0.6695278969957081,
+        "fnr": 0.4264705882352941,
+        "fpr": 0.024265644955300127,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8041237113402062,
+        "recall": 0.5735294117647058,
+        "specificity": 0.9757343550446999
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 4,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 11,
+        "fst_rate": 0.44,
+        "fst_rate_ci95": [
+          0.26665638881067344,
+          0.6293266813020123
+        ],
+        "fst_share_of_triggers": 0.6470588235294118,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9140369967355821,
+        "balanced_accuracy": 0.7976579520697167,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9455823925314807,
+            "lo": 0.8753961159296567,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5541467278307647,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.056245647356758466,
+            "lo": 0.019466706114962585,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 50,
+          "fp": 29,
+          "n": 919,
+          "tn": 754,
+          "tp": 86
+        },
+        "f1": 0.6852589641434262,
+        "fnr": 0.36764705882352944,
+        "fpr": 0.037037037037037035,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7478260869565218,
+        "recall": 0.6323529411764706,
+        "specificity": 0.9629629629629629
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.52,
+        "fst_rate_ci95": [
+          0.3349851695035678,
+          0.6996871404588704
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 117,
+        "n_val": 585,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7202216066481993,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 0,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.0,
+      "realized_keyframe_fraction": 0.0
+    },
+    "condition": "C_vlm_only",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": null,
+      "human_time_s": 0.0,
+      "human_time_s_capped": 0.0,
+      "mean_s_per_episode": null,
+      "median_s_per_episode": null,
+      "n_corrections": 0,
+      "n_episodes_reviewed": 0,
+      "n_keyframes_reviewed": 0,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": null,
+      "timing_source": "not_applicable"
+    },
+    "fingerprints": {
+      "labels": "3bd589e4555d3b55",
+      "model": "d584cd3215742cd5",
+      "selected": "4f53cda18c2baa0c",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.0,
+    "label_counts": {
+      "ambiguous": 54,
+      "failure": 2164,
+      "human_labeled": 0,
+      "invalid": 25,
+      "n_excluded": 108,
+      "n_total": 2847,
+      "n_trainable": 2739,
+      "no_label": 29,
+      "success": 575,
+      "vlm_labeled": 2793
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9146525679758308,
+      "balanced_accuracy": 0.9019443527797558,
+      "counts": {
+        "fn": 48,
+        "fp": 178,
+        "n": 2648,
+        "tn": 2058,
+        "tp": 364
+      },
+      "f1": 0.7631027253668764,
+      "fnr": 0.11650485436893204,
+      "fpr": 0.07960644007155634,
+      "n": 2648,
+      "n_label_excluded": 79,
+      "n_ref_excluded": 95,
+      "precision": 0.6715867158671587,
+      "recall": 0.883495145631068,
+      "specificity": 0.9203935599284436
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9028842643300474,
+      "balanced_accuracy": 0.8988240500315625,
+      "counts": {
+        "fn": 42,
+        "fp": 224,
+        "n": 2739,
+        "tn": 2122,
+        "tp": 351
+      },
+      "f1": 0.7252066115702479,
+      "fnr": 0.10687022900763359,
+      "fpr": 0.09548167092924126,
+      "n": 2739,
+      "n_label_excluded": 83,
+      "n_ref_excluded": 0,
+      "precision": 0.6104347826086957,
+      "recall": 0.8931297709923665,
+      "specificity": 0.9045183290707587
+    },
+    "policy": "none",
+    "replicate": 0,
+    "selected_episodes": [],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9227421109902068,
+        "balanced_accuracy": 0.80580440988656,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9526898653797307,
+            "lo": 0.8852739626618555,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5312624007936508,
+            "lo": 0.2092584466871435,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04665846994535519,
+            "lo": 0.012885357251564918,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 49,
+          "fp": 22,
+          "n": 919,
+          "tn": 761,
+          "tp": 87
+        },
+        "f1": 0.710204081632653,
+        "fnr": 0.3602941176470588,
+        "fpr": 0.0280970625798212,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7981651376146789,
+        "recall": 0.6397058823529411,
+        "specificity": 0.9719029374201787
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 4,
+          "false_trigger": 6,
+          "missed_success": 1,
+          "true_no_trigger": 7,
+          "true_trigger": 6
+        },
+        "fst_count": 10,
+        "fst_rate": 0.4166666666666667,
+        "fst_rate_ci95": [
+          0.24467602609811764,
+          0.6116533413477124
+        ],
+        "fst_share_of_triggers": 0.625,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9205658324265505,
+        "balanced_accuracy": 0.789337765757644,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.951614202557084,
+            "lo": 0.879363794515205,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5693536750976065,
+            "lo": 0.25,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04226101288582559,
+            "lo": 0.00977783459420653,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 54,
+          "fp": 19,
+          "n": 919,
+          "tn": 764,
+          "tp": 82
+        },
+        "f1": 0.6919831223628693,
+        "fnr": 0.39705882352941174,
+        "fpr": 0.024265644955300127,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8118811881188119,
+        "recall": 0.6029411764705882,
+        "specificity": 0.9757343550446999
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 3,
+          "false_trigger": 5,
+          "missed_success": 1,
+          "true_no_trigger": 8,
+          "true_trigger": 7
+        },
+        "fst_count": 8,
+        "fst_rate": 0.3333333333333333,
+        "fst_rate_ci95": [
+          0.1797219032729775,
+          0.5329368316186824
+        ],
+        "fst_share_of_triggers": 0.5333333333333333,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 90,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.8609271523178809,
+        "value": 0.55
+      }
+    },
+    "budget": {
+      "k": 88,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 1.0,
+      "realized_keyframe_fraction": 1.0
+    },
+    "condition": "A_full_review",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.14138908575478384,
+      "human_time_s": 2576.046,
+      "human_time_s_capped": 2171.3540000000003,
+      "mean_s_per_episode": 29.273249999999997,
+      "median_s_per_episode": 20.2655,
+      "n_corrections": 399,
+      "n_episodes_reviewed": 88,
+      "n_keyframes_reviewed": 2822,
+      "n_time_capped": 2,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.9128440822111976,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "ebee328438bdfa51",
+      "model": "e0387776e1ecb0b6",
+      "selected": "7a841fb610a5d69d",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 1.0,
+    "label_counts": {
+      "ambiguous": 95,
+      "failure": 2302,
+      "human_labeled": 2822,
+      "invalid": 25,
+      "n_excluded": 120,
+      "n_total": 2847,
+      "n_trainable": 2727,
+      "no_label": 0,
+      "success": 425,
+      "vlm_labeled": 0
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "counts": {
+        "fn": 0,
+        "fp": 0,
+        "n": 2727,
+        "tn": 2302,
+        "tp": 425
+      },
+      "f1": 1.0,
+      "fnr": 0.0,
+      "fpr": 0.0,
+      "n": 2727,
+      "n_label_excluded": 0,
+      "n_ref_excluded": 95,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9831316464979831,
+      "balanced_accuracy": 0.981725904857025,
+      "counts": {
+        "fn": 8,
+        "fp": 38,
+        "n": 2727,
+        "tn": 2294,
+        "tp": 387
+      },
+      "f1": 0.9439024390243904,
+      "fnr": 0.020253164556962026,
+      "fpr": 0.016295025728987993,
+      "n": 2727,
+      "n_label_excluded": 95,
+      "n_ref_excluded": 0,
+      "precision": 0.9105882352941177,
+      "recall": 0.979746835443038,
+      "specificity": 0.983704974271012
+    },
+    "policy": "full",
+    "replicate": 1,
+    "selected_episodes": [
+      "syn0000",
+      "syn0001",
+      "syn0002",
+      "syn0003",
+      "syn0006",
+      "syn0007",
+      "syn0008",
+      "syn0009",
+      "syn0011",
+      "syn0012",
+      "syn0013",
+      "syn0016",
+      "syn0017",
+      "syn0019",
+      "syn0020",
+      "syn0021",
+      "syn0022",
+      "syn0023",
+      "syn0025",
+      "syn0027",
+      "syn0028",
+      "syn0032",
+      "syn0033",
+      "syn0034",
+      "syn0035",
+      "syn0036",
+      "syn0037",
+      "syn0038",
+      "syn0039",
+      "syn0040",
+      "syn0041",
+      "syn0046",
+      "syn0047",
+      "syn0048",
+      "syn0049",
+      "syn0051",
+      "syn0052",
+      "syn0053",
+      "syn0054",
+      "syn0055",
+      "syn0056",
+      "syn0057",
+      "syn0058",
+      "syn0059",
+      "syn0060",
+      "syn0063",
+      "syn0064",
+      "syn0066",
+      "syn0067",
+      "syn0070",
+      "syn0071",
+      "syn0072",
+      "syn0073",
+      "syn0074",
+      "syn0076",
+      "syn0077",
+      "syn0078",
+      "syn0079",
+      "syn0080",
+      "syn0081",
+      "syn0082",
+      "syn0083",
+      "syn0084",
+      "syn0085",
+      "syn0089",
+      "syn0090",
+      "syn0091",
+      "syn0093",
+      "syn0094",
+      "syn0095",
+      "syn0097",
+      "syn0098",
+      "syn0099",
+      "syn0100",
+      "syn0101",
+      "syn0103",
+      "syn0104",
+      "syn0106",
+      "syn0107",
+      "syn0108",
+      "syn0109",
+      "syn0112",
+      "syn0113",
+      "syn0114",
+      "syn0116",
+      "syn0117",
+      "syn0118",
+      "syn0119"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9194776931447225,
+        "balanced_accuracy": 0.7826233941852603,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9533069366194452,
+            "lo": 0.8786443024856012,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.595779121383744,
+            "lo": 0.23565942300487075,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.039292737014508576,
+            "lo": 0.009137786254351611,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 56,
+          "fp": 18,
+          "n": 919,
+          "tn": 765,
+          "tp": 80
+        },
+        "f1": 0.6837606837606838,
+        "fnr": 0.4117647058823529,
+        "fpr": 0.022988505747126436,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8163265306122449,
+        "recall": 0.5882352941176471,
+        "specificity": 0.9770114942528736
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 2,
+          "false_trigger": 6,
+          "missed_success": 2,
+          "true_no_trigger": 7,
+          "true_trigger": 7
+        },
+        "fst_count": 8,
+        "fst_rate": 0.3333333333333333,
+        "fst_rate_ci95": [
+          0.1797219032729775,
+          0.5329368316186824
+        ],
+        "fst_share_of_triggers": 0.5333333333333333,
+        "mean_trigger_delay_keyframes": 0.14285714285714285,
+        "missed_success_rate": 0.18181818181818182,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9173014145810664,
+        "balanced_accuracy": 0.7995736608819772,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9486906561415295,
+            "lo": 0.8792089863494177,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5541467278307647,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.05263319143446852,
+            "lo": 0.015414500260935115,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 50,
+          "fp": 26,
+          "n": 919,
+          "tn": 757,
+          "tp": 86
+        },
+        "f1": 0.6935483870967742,
+        "fnr": 0.36764705882352944,
+        "fpr": 0.033205619412515965,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7678571428571429,
+        "recall": 0.6323529411764706,
+        "specificity": 0.966794380587484
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 1,
+          "true_no_trigger": 6,
+          "true_trigger": 5
+        },
+        "fst_count": 12,
+        "fst_rate": 0.5,
+        "fst_rate_ci95": [
+          0.3142742581957335,
+          0.6857257418042665
+        ],
+        "fst_share_of_triggers": 0.7058823529411765,
+        "mean_trigger_delay_keyframes": 0.2,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 115,
+        "n_val": 583,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7407407407407407,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.25442948263642806
+    },
+    "condition": "B_review25_random",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.1309192200557103,
+      "human_time_s": 497.8709999999999,
+      "human_time_s_capped": 497.8709999999999,
+      "mean_s_per_episode": 22.630499999999998,
+      "median_s_per_episode": 19.9015,
+      "n_corrections": 94,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 718,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.6934136490250695,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "f5b62c05cb0b2066",
+      "model": "12ff940e40c2f1f4",
+      "selected": "f3d9d62317402404",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 64,
+      "failure": 2194,
+      "human_labeled": 718,
+      "invalid": 25,
+      "n_excluded": 112,
+      "n_total": 2847,
+      "n_trainable": 2735,
+      "no_label": 23,
+      "success": 541,
+      "vlm_labeled": 2081
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9369369369369369,
+      "balanced_accuracy": 0.929159420289855,
+      "counts": {
+        "fn": 34,
+        "fp": 134,
+        "n": 2664,
+        "tn": 2116,
+        "tp": 380
+      },
+      "f1": 0.8189655172413793,
+      "fnr": 0.0821256038647343,
+      "fpr": 0.059555555555555556,
+      "n": 2664,
+      "n_label_excluded": 63,
+      "n_ref_excluded": 95,
+      "precision": 0.7392996108949417,
+      "recall": 0.9178743961352657,
+      "specificity": 0.9404444444444444
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9206581352833638,
+      "balanced_accuracy": 0.9167114795403934,
+      "counts": {
+        "fn": 35,
+        "fp": 182,
+        "n": 2735,
+        "tn": 2159,
+        "tp": 359
+      },
+      "f1": 0.7679144385026737,
+      "fnr": 0.08883248730964467,
+      "fpr": 0.07774455360956856,
+      "n": 2735,
+      "n_label_excluded": 87,
+      "n_ref_excluded": 0,
+      "precision": 0.6635859519408502,
+      "recall": 0.9111675126903553,
+      "specificity": 0.9222554463904314
+    },
+    "policy": "random",
+    "replicate": 1,
+    "selected_episodes": [
+      "syn0006",
+      "syn0078",
+      "syn0012",
+      "syn0089",
+      "syn0081",
+      "syn0011",
+      "syn0095",
+      "syn0114",
+      "syn0025",
+      "syn0118",
+      "syn0067",
+      "syn0057",
+      "syn0101",
+      "syn0034",
+      "syn0106",
+      "syn0020",
+      "syn0003",
+      "syn0064",
+      "syn0084",
+      "syn0056",
+      "syn0033",
+      "syn0039"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9140369967355821,
+        "balanced_accuracy": 0.7763926451806776,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9476120252949377,
+            "lo": 0.8733793149112739,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6010897277736655,
+            "lo": 0.23594789952050382,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04568207520497596,
+            "lo": 0.013017477448453609,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 57,
+          "fp": 22,
+          "n": 919,
+          "tn": 761,
+          "tp": 79
+        },
+        "f1": 0.6666666666666667,
+        "fnr": 0.41911764705882354,
+        "fpr": 0.0280970625798212,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7821782178217822,
+        "recall": 0.5808823529411765,
+        "specificity": 0.9719029374201787
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 4,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 11,
+        "fst_rate": 0.44,
+        "fst_rate_ci95": [
+          0.26665638881067344,
+          0.6293266813020123
+        ],
+        "fst_share_of_triggers": 0.6470588235294118,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9173014145810664,
+        "balanced_accuracy": 0.8117252648185711,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9466979279158554,
+            "lo": 0.8833890440386681,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5106772184743124,
+            "lo": 0.17854639519359147,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.0579752275025278,
+            "lo": 0.019820411154357596,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 46,
+          "fp": 30,
+          "n": 919,
+          "tn": 753,
+          "tp": 90
+        },
+        "f1": 0.7031250000000001,
+        "fnr": 0.3382352941176471,
+        "fpr": 0.038314176245210725,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.75,
+        "recall": 0.6617647058823529,
+        "specificity": 0.9616858237547893
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.52,
+        "fst_rate_ci95": [
+          0.3349851695035678,
+          0.6996871404588704
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 99,
+        "n_val": 586,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.771349862258953,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.27604535790219703
+    },
+    "condition": "B_review25_lowconf",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.17329910141206675,
+      "human_time_s": 843.0379999999999,
+      "human_time_s_capped": 638.0889999999999,
+      "mean_s_per_episode": 38.31990909090909,
+      "median_s_per_episode": 25.7105,
+      "n_corrections": 135,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 779,
+      "n_time_capped": 1,
+      "n_time_missing": 0,
+      "s_per_keyframe": 1.0822053915275993,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "12d6fc6ccc931504",
+      "model": "0de2a3f218bf373e",
+      "selected": "ea006d7605429d99",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 57,
+      "failure": 2221,
+      "human_labeled": 779,
+      "invalid": 25,
+      "n_excluded": 97,
+      "n_total": 2847,
+      "n_trainable": 2750,
+      "no_label": 15,
+      "success": 529,
+      "vlm_labeled": 2028
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9422718808193669,
+      "balanced_accuracy": 0.9335357111136489,
+      "counts": {
+        "fn": 33,
+        "fp": 122,
+        "n": 2685,
+        "tn": 2146,
+        "tp": 384
+      },
+      "f1": 0.8320693391115925,
+      "fnr": 0.07913669064748201,
+      "fpr": 0.053791887125220456,
+      "n": 2685,
+      "n_label_excluded": 42,
+      "n_ref_excluded": 95,
+      "precision": 0.758893280632411,
+      "recall": 0.920863309352518,
+      "specificity": 0.9462081128747796
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9298181818181818,
+      "balanced_accuracy": 0.9274992919852733,
+      "counts": {
+        "fn": 30,
+        "fp": 163,
+        "n": 2750,
+        "tn": 2191,
+        "tp": 366
+      },
+      "f1": 0.7913513513513513,
+      "fnr": 0.07575757575757576,
+      "fpr": 0.06924384027187766,
+      "n": 2750,
+      "n_label_excluded": 72,
+      "n_ref_excluded": 0,
+      "precision": 0.6918714555765595,
+      "recall": 0.9242424242424242,
+      "specificity": 0.9307561597281223
+    },
+    "policy": "low_confidence",
+    "replicate": 1,
+    "selected_episodes": [
+      "syn0079",
+      "syn0073",
+      "syn0097",
+      "syn0109",
+      "syn0116",
+      "syn0063",
+      "syn0009",
+      "syn0060",
+      "syn0023",
+      "syn0028",
+      "syn0067",
+      "syn0006",
+      "syn0002",
+      "syn0025",
+      "syn0051",
+      "syn0118",
+      "syn0080",
+      "syn0056",
+      "syn0103",
+      "syn0099",
+      "syn0066",
+      "syn0090"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7746318834047028,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9491726732769871,
+            "lo": 0.8759057902499906,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6,
+            "lo": 0.2520483193277311,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.040560244660137884,
+            "lo": 0.010327519379844961,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 58,
+          "fp": 19,
+          "n": 919,
+          "tn": 764,
+          "tp": 78
+        },
+        "f1": 0.6695278969957081,
+        "fnr": 0.4264705882352941,
+        "fpr": 0.024265644955300127,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8041237113402062,
+        "recall": 0.5735294117647058,
+        "specificity": 0.9757343550446999
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 2,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 7
+        },
+        "fst_count": 9,
+        "fst_rate": 0.375,
+        "fst_rate_ci95": [
+          0.21159367559548778,
+          0.5729003755732572
+        ],
+        "fst_share_of_triggers": 0.5625,
+        "mean_trigger_delay_keyframes": 0.14285714285714285,
+        "missed_success_rate": 0.18181818181818182,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9151251360174102,
+        "balanced_accuracy": 0.7982965216738036,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9468731367522358,
+            "lo": 0.875948923220414,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5541467278307647,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.0542563528654908,
+            "lo": 0.018224468427835053,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 50,
+          "fp": 28,
+          "n": 919,
+          "tn": 755,
+          "tp": 86
+        },
+        "f1": 0.688,
+        "fnr": 0.36764705882352944,
+        "fpr": 0.035759897828863345,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7543859649122807,
+        "recall": 0.6323529411764706,
+        "specificity": 0.9642401021711366
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 5
+        },
+        "fst_count": 12,
+        "fst_rate": 0.48,
+        "fst_rate_ci95": [
+          0.30031285954112974,
+          0.6650148304964322
+        ],
+        "fst_share_of_triggers": 0.7058823529411765,
+        "mean_trigger_delay_keyframes": 0.2,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 110,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7285714285714285,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.24415308291991494
+    },
+    "condition": "B_review25_fakesuccess",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.12772133526850507,
+      "human_time_s": 438.32599999999996,
+      "human_time_s_capped": 438.32599999999996,
+      "mean_s_per_episode": 19.923909090909092,
+      "median_s_per_episode": 18.532,
+      "n_corrections": 88,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 689,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.636177068214804,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "78cfd447e68a6a03",
+      "model": "cd46a304f5a91f2e",
+      "selected": "a598eed019c5d2d4",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 69,
+      "failure": 2190,
+      "human_labeled": 689,
+      "invalid": 25,
+      "n_excluded": 117,
+      "n_total": 2847,
+      "n_trainable": 2730,
+      "no_label": 23,
+      "success": 540,
+      "vlm_labeled": 2110
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9320825515947467,
+      "balanced_accuracy": 0.9221480313196213,
+      "counts": {
+        "fn": 38,
+        "fp": 143,
+        "n": 2665,
+        "tn": 2110,
+        "tp": 374
+      },
+      "f1": 0.805166846071044,
+      "fnr": 0.09223300970873786,
+      "fpr": 0.06347092765201953,
+      "n": 2665,
+      "n_label_excluded": 62,
+      "n_ref_excluded": 95,
+      "precision": 0.723404255319149,
+      "recall": 0.9077669902912622,
+      "specificity": 0.9365290723479804
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9164835164835164,
+      "balanced_accuracy": 0.9087742881583771,
+      "counts": {
+        "fn": 40,
+        "fp": 188,
+        "n": 2730,
+        "tn": 2150,
+        "tp": 352
+      },
+      "f1": 0.7553648068669527,
+      "fnr": 0.10204081632653061,
+      "fpr": 0.08041060735671514,
+      "n": 2730,
+      "n_label_excluded": 92,
+      "n_ref_excluded": 0,
+      "precision": 0.6518518518518519,
+      "recall": 0.8979591836734694,
+      "specificity": 0.9195893926432849
+    },
+    "policy": "fake_success_priority",
+    "replicate": 1,
+    "selected_episodes": [
+      "syn0077",
+      "syn0037",
+      "syn0007",
+      "syn0011",
+      "syn0098",
+      "syn0082",
+      "syn0084",
+      "syn0099",
+      "syn0089",
+      "syn0041",
+      "syn0118",
+      "syn0083",
+      "syn0034",
+      "syn0048",
+      "syn0067",
+      "syn0090",
+      "syn0101",
+      "syn0017",
+      "syn0022",
+      "syn0057",
+      "syn0046",
+      "syn0039"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9151251360174102,
+        "balanced_accuracy": 0.7739933138006161,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9489820792889204,
+            "lo": 0.8743154018873553,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6041704136690647,
+            "lo": 0.24198726114649682,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.041402578186557994,
+            "lo": 0.01155253378128498,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 58,
+          "fp": 20,
+          "n": 919,
+          "tn": 763,
+          "tp": 78
+        },
+        "f1": 0.6666666666666666,
+        "fnr": 0.4264705882352941,
+        "fpr": 0.02554278416347382,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7959183673469388,
+        "recall": 0.5735294117647058,
+        "specificity": 0.9744572158365262
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 4,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 11,
+        "fst_rate": 0.44,
+        "fst_rate_ci95": [
+          0.26665638881067344,
+          0.6293266813020123
+        ],
+        "fst_share_of_triggers": 0.6470588235294118,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9151251360174102,
+        "balanced_accuracy": 0.801334422657952,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.946469724442142,
+            "lo": 0.8783916025571944,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5468873355263157,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.05624343692351355,
+            "lo": 0.020026034712950603,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 49,
+          "fp": 29,
+          "n": 919,
+          "tn": 754,
+          "tp": 87
+        },
+        "f1": 0.6904761904761905,
+        "fnr": 0.3602941176470588,
+        "fpr": 0.037037037037037035,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.75,
+        "recall": 0.6397058823529411,
+        "specificity": 0.9629629629629629
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.52,
+        "fst_rate_ci95": [
+          0.3349851695035678,
+          0.6996871404588704
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 117,
+        "n_val": 585,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.726027397260274,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 0,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.0,
+      "realized_keyframe_fraction": 0.0
+    },
+    "condition": "C_vlm_only",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": null,
+      "human_time_s": 0.0,
+      "human_time_s_capped": 0.0,
+      "mean_s_per_episode": null,
+      "median_s_per_episode": null,
+      "n_corrections": 0,
+      "n_episodes_reviewed": 0,
+      "n_keyframes_reviewed": 0,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": null,
+      "timing_source": "not_applicable"
+    },
+    "fingerprints": {
+      "labels": "3bd589e4555d3b55",
+      "model": "cf825ce0a54d91a4",
+      "selected": "4f53cda18c2baa0c",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.0,
+    "label_counts": {
+      "ambiguous": 54,
+      "failure": 2164,
+      "human_labeled": 0,
+      "invalid": 25,
+      "n_excluded": 108,
+      "n_total": 2847,
+      "n_trainable": 2739,
+      "no_label": 29,
+      "success": 575,
+      "vlm_labeled": 2793
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9146525679758308,
+      "balanced_accuracy": 0.9019443527797558,
+      "counts": {
+        "fn": 48,
+        "fp": 178,
+        "n": 2648,
+        "tn": 2058,
+        "tp": 364
+      },
+      "f1": 0.7631027253668764,
+      "fnr": 0.11650485436893204,
+      "fpr": 0.07960644007155634,
+      "n": 2648,
+      "n_label_excluded": 79,
+      "n_ref_excluded": 95,
+      "precision": 0.6715867158671587,
+      "recall": 0.883495145631068,
+      "specificity": 0.9203935599284436
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9028842643300474,
+      "balanced_accuracy": 0.8988240500315625,
+      "counts": {
+        "fn": 42,
+        "fp": 224,
+        "n": 2739,
+        "tn": 2122,
+        "tp": 351
+      },
+      "f1": 0.7252066115702479,
+      "fnr": 0.10687022900763359,
+      "fpr": 0.09548167092924126,
+      "n": 2739,
+      "n_label_excluded": 83,
+      "n_ref_excluded": 0,
+      "precision": 0.6104347826086957,
+      "recall": 0.8931297709923665,
+      "specificity": 0.9045183290707587
+    },
+    "policy": "none",
+    "replicate": 1,
+    "selected_episodes": [],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9238302502720348,
+        "balanced_accuracy": 0.8064429794906468,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9534387553986857,
+            "lo": 0.8866036130317694,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5312624007936508,
+            "lo": 0.2092584466871435,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04527607578294094,
+            "lo": 0.011596821526408427,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 49,
+          "fp": 21,
+          "n": 919,
+          "tn": 762,
+          "tp": 87
+        },
+        "f1": 0.7131147540983606,
+        "fnr": 0.3602941176470588,
+        "fpr": 0.02681992337164751,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8055555555555556,
+        "recall": 0.6397058823529411,
+        "specificity": 0.9731800766283525
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 3,
+          "false_trigger": 6,
+          "missed_success": 1,
+          "true_no_trigger": 7,
+          "true_trigger": 7
+        },
+        "fst_count": 9,
+        "fst_rate": 0.375,
+        "fst_rate_ci95": [
+          0.21159367559548778,
+          0.5729003755732572
+        ],
+        "fst_share_of_triggers": 0.5625,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9216539717083787,
+        "balanced_accuracy": 0.7899763353617308,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9530445576784016,
+            "lo": 0.8805666769126653,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5693536750976065,
+            "lo": 0.25,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04037198717439644,
+            "lo": 0.00895864566108391,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 54,
+          "fp": 18,
+          "n": 919,
+          "tn": 765,
+          "tp": 82
+        },
+        "f1": 0.6949152542372881,
+        "fnr": 0.39705882352941174,
+        "fpr": 0.022988505747126436,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.82,
+        "recall": 0.6029411764705882,
+        "specificity": 0.9770114942528736
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 3,
+          "false_trigger": 5,
+          "missed_success": 1,
+          "true_no_trigger": 8,
+          "true_trigger": 7
+        },
+        "fst_count": 8,
+        "fst_rate": 0.3333333333333333,
+        "fst_rate_ci95": [
+          0.1797219032729775,
+          0.5329368316186824
+        ],
+        "fst_share_of_triggers": 0.5333333333333333,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 90,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.8609271523178809,
+        "value": 0.55
+      }
+    },
+    "budget": {
+      "k": 88,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 1.0,
+      "realized_keyframe_fraction": 1.0
+    },
+    "condition": "A_full_review",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.14138908575478384,
+      "human_time_s": 2576.046,
+      "human_time_s_capped": 2171.3540000000003,
+      "mean_s_per_episode": 29.273249999999997,
+      "median_s_per_episode": 20.2655,
+      "n_corrections": 399,
+      "n_episodes_reviewed": 88,
+      "n_keyframes_reviewed": 2822,
+      "n_time_capped": 2,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.9128440822111976,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "ebee328438bdfa51",
+      "model": "d74cc0c19d40d650",
+      "selected": "7a841fb610a5d69d",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 1.0,
+    "label_counts": {
+      "ambiguous": 95,
+      "failure": 2302,
+      "human_labeled": 2822,
+      "invalid": 25,
+      "n_excluded": 120,
+      "n_total": 2847,
+      "n_trainable": 2727,
+      "no_label": 0,
+      "success": 425,
+      "vlm_labeled": 0
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "counts": {
+        "fn": 0,
+        "fp": 0,
+        "n": 2727,
+        "tn": 2302,
+        "tp": 425
+      },
+      "f1": 1.0,
+      "fnr": 0.0,
+      "fpr": 0.0,
+      "n": 2727,
+      "n_label_excluded": 0,
+      "n_ref_excluded": 95,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9831316464979831,
+      "balanced_accuracy": 0.981725904857025,
+      "counts": {
+        "fn": 8,
+        "fp": 38,
+        "n": 2727,
+        "tn": 2294,
+        "tp": 387
+      },
+      "f1": 0.9439024390243904,
+      "fnr": 0.020253164556962026,
+      "fpr": 0.016295025728987993,
+      "n": 2727,
+      "n_label_excluded": 95,
+      "n_ref_excluded": 0,
+      "precision": 0.9105882352941177,
+      "recall": 0.979746835443038,
+      "specificity": 0.983704974271012
+    },
+    "policy": "full",
+    "replicate": 2,
+    "selected_episodes": [
+      "syn0000",
+      "syn0001",
+      "syn0002",
+      "syn0003",
+      "syn0006",
+      "syn0007",
+      "syn0008",
+      "syn0009",
+      "syn0011",
+      "syn0012",
+      "syn0013",
+      "syn0016",
+      "syn0017",
+      "syn0019",
+      "syn0020",
+      "syn0021",
+      "syn0022",
+      "syn0023",
+      "syn0025",
+      "syn0027",
+      "syn0028",
+      "syn0032",
+      "syn0033",
+      "syn0034",
+      "syn0035",
+      "syn0036",
+      "syn0037",
+      "syn0038",
+      "syn0039",
+      "syn0040",
+      "syn0041",
+      "syn0046",
+      "syn0047",
+      "syn0048",
+      "syn0049",
+      "syn0051",
+      "syn0052",
+      "syn0053",
+      "syn0054",
+      "syn0055",
+      "syn0056",
+      "syn0057",
+      "syn0058",
+      "syn0059",
+      "syn0060",
+      "syn0063",
+      "syn0064",
+      "syn0066",
+      "syn0067",
+      "syn0070",
+      "syn0071",
+      "syn0072",
+      "syn0073",
+      "syn0074",
+      "syn0076",
+      "syn0077",
+      "syn0078",
+      "syn0079",
+      "syn0080",
+      "syn0081",
+      "syn0082",
+      "syn0083",
+      "syn0084",
+      "syn0085",
+      "syn0089",
+      "syn0090",
+      "syn0091",
+      "syn0093",
+      "syn0094",
+      "syn0095",
+      "syn0097",
+      "syn0098",
+      "syn0099",
+      "syn0100",
+      "syn0101",
+      "syn0103",
+      "syn0104",
+      "syn0106",
+      "syn0107",
+      "syn0108",
+      "syn0109",
+      "syn0112",
+      "syn0113",
+      "syn0114",
+      "syn0116",
+      "syn0117",
+      "syn0118",
+      "syn0119"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7807076853729997,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.949478640918733,
+            "lo": 0.876249309137804,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.595779121383744,
+            "lo": 0.23565942300487075,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04367859141590254,
+            "lo": 0.01210784784977248,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 56,
+          "fp": 21,
+          "n": 919,
+          "tn": 762,
+          "tp": 80
+        },
+        "f1": 0.6751054852320676,
+        "fnr": 0.4117647058823529,
+        "fpr": 0.02681992337164751,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7920792079207921,
+        "recall": 0.5882352941176471,
+        "specificity": 0.9731800766283525
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 1,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 12,
+        "fst_rate": 0.48,
+        "fst_rate_ci95": [
+          0.30031285954112974,
+          0.6650148304964322
+        ],
+        "fst_share_of_triggers": 0.6666666666666666,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.08333333333333333,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9183895538628944,
+        "balanced_accuracy": 0.8032501314702125,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9492343396747625,
+            "lo": 0.881133619763695,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.545516811955168,
+            "lo": 0.1911319073083779,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.05216497546678044,
+            "lo": 0.016342169232550063,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 49,
+          "fp": 26,
+          "n": 919,
+          "tn": 757,
+          "tp": 87
+        },
+        "f1": 0.6987951807228915,
+        "fnr": 0.3602941176470588,
+        "fpr": 0.033205619412515965,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7699115044247787,
+        "recall": 0.6397058823529411,
+        "specificity": 0.966794380587484
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 1,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.5416666666666666,
+        "fst_rate_ci95": [
+          0.3507486535891948,
+          0.72108666268789
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 108,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7558139534883721,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.2505315379163714
+    },
+    "condition": "B_review25_random",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.14002828854314003,
+      "human_time_s": 457.23499999999996,
+      "human_time_s_capped": 457.23499999999996,
+      "mean_s_per_episode": 20.783409090909092,
+      "median_s_per_episode": 19.3735,
+      "n_corrections": 99,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 707,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.6467256011315416,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "ffca21ad4f29e7bc",
+      "model": "839de5e9dcf46256",
+      "selected": "ae543a4158fc9ab2",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 67,
+      "failure": 2206,
+      "human_labeled": 707,
+      "invalid": 25,
+      "n_excluded": 114,
+      "n_total": 2847,
+      "n_trainable": 2733,
+      "no_label": 22,
+      "success": 527,
+      "vlm_labeled": 2093
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9376876876876877,
+      "balanced_accuracy": 0.9247772771834336,
+      "counts": {
+        "fn": 39,
+        "fp": 127,
+        "n": 2664,
+        "tn": 2122,
+        "tp": 376
+      },
+      "f1": 0.8191721132897603,
+      "fnr": 0.09397590361445783,
+      "fpr": 0.05646954201867497,
+      "n": 2664,
+      "n_label_excluded": 63,
+      "n_ref_excluded": 95,
+      "precision": 0.7475149105367793,
+      "recall": 0.9060240963855422,
+      "specificity": 0.9435304579813251
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9264544456641054,
+      "balanced_accuracy": 0.9211537752043804,
+      "counts": {
+        "fn": 34,
+        "fp": 167,
+        "n": 2733,
+        "tn": 2172,
+        "tp": 360
+      },
+      "f1": 0.7817589576547231,
+      "fnr": 0.08629441624365482,
+      "fpr": 0.07139803334758443,
+      "n": 2733,
+      "n_label_excluded": 89,
+      "n_ref_excluded": 0,
+      "precision": 0.683111954459203,
+      "recall": 0.9137055837563451,
+      "specificity": 0.9286019666524156
+    },
+    "policy": "random",
+    "replicate": 2,
+    "selected_episodes": [
+      "syn0023",
+      "syn0070",
+      "syn0049",
+      "syn0039",
+      "syn0095",
+      "syn0041",
+      "syn0000",
+      "syn0053",
+      "syn0073",
+      "syn0025",
+      "syn0078",
+      "syn0002",
+      "syn0056",
+      "syn0007",
+      "syn0032",
+      "syn0081",
+      "syn0008",
+      "syn0036",
+      "syn0016",
+      "syn0076",
+      "syn0113",
+      "syn0028"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9140369967355821,
+        "balanced_accuracy": 0.7763926451806776,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9476120252949377,
+            "lo": 0.8733793149112739,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6010897277736655,
+            "lo": 0.23594789952050382,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04568207520497596,
+            "lo": 0.013017477448453609,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 57,
+          "fp": 22,
+          "n": 919,
+          "tn": 761,
+          "tp": 79
+        },
+        "f1": 0.6666666666666667,
+        "fnr": 0.41911764705882354,
+        "fpr": 0.0280970625798212,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7821782178217822,
+        "recall": 0.5808823529411765,
+        "specificity": 0.9719029374201787
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 4,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 11,
+        "fst_rate": 0.44,
+        "fst_rate_ci95": [
+          0.26665638881067344,
+          0.6293266813020123
+        ],
+        "fst_share_of_triggers": 0.6470588235294118,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9183895538628944,
+        "balanced_accuracy": 0.8154017354068064,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9477287560623259,
+            "lo": 0.8839852080453584,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5080040526849037,
+            "lo": 0.16822037226105394,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.0579752275025278,
+            "lo": 0.019820411154357596,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 45,
+          "fp": 30,
+          "n": 919,
+          "tn": 753,
+          "tp": 91
+        },
+        "f1": 0.7081712062256809,
+        "fnr": 0.33088235294117646,
+        "fpr": 0.038314176245210725,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7520661157024794,
+        "recall": 0.6691176470588235,
+        "specificity": 0.9616858237547893
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.52,
+        "fst_rate_ci95": [
+          0.3349851695035678,
+          0.6996871404588704
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 99,
+        "n_val": 586,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.771349862258953,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.27604535790219703
+    },
+    "condition": "B_review25_lowconf",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.17329910141206675,
+      "human_time_s": 843.0379999999999,
+      "human_time_s_capped": 638.0889999999999,
+      "mean_s_per_episode": 38.31990909090909,
+      "median_s_per_episode": 25.7105,
+      "n_corrections": 135,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 779,
+      "n_time_capped": 1,
+      "n_time_missing": 0,
+      "s_per_keyframe": 1.0822053915275993,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "12d6fc6ccc931504",
+      "model": "1a2be7613798a759",
+      "selected": "ea006d7605429d99",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 57,
+      "failure": 2221,
+      "human_labeled": 779,
+      "invalid": 25,
+      "n_excluded": 97,
+      "n_total": 2847,
+      "n_trainable": 2750,
+      "no_label": 15,
+      "success": 529,
+      "vlm_labeled": 2028
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9422718808193669,
+      "balanced_accuracy": 0.9335357111136489,
+      "counts": {
+        "fn": 33,
+        "fp": 122,
+        "n": 2685,
+        "tn": 2146,
+        "tp": 384
+      },
+      "f1": 0.8320693391115925,
+      "fnr": 0.07913669064748201,
+      "fpr": 0.053791887125220456,
+      "n": 2685,
+      "n_label_excluded": 42,
+      "n_ref_excluded": 95,
+      "precision": 0.758893280632411,
+      "recall": 0.920863309352518,
+      "specificity": 0.9462081128747796
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9298181818181818,
+      "balanced_accuracy": 0.9274992919852733,
+      "counts": {
+        "fn": 30,
+        "fp": 163,
+        "n": 2750,
+        "tn": 2191,
+        "tp": 366
+      },
+      "f1": 0.7913513513513513,
+      "fnr": 0.07575757575757576,
+      "fpr": 0.06924384027187766,
+      "n": 2750,
+      "n_label_excluded": 72,
+      "n_ref_excluded": 0,
+      "precision": 0.6918714555765595,
+      "recall": 0.9242424242424242,
+      "specificity": 0.9307561597281223
+    },
+    "policy": "low_confidence",
+    "replicate": 2,
+    "selected_episodes": [
+      "syn0079",
+      "syn0073",
+      "syn0097",
+      "syn0109",
+      "syn0116",
+      "syn0063",
+      "syn0009",
+      "syn0060",
+      "syn0023",
+      "syn0028",
+      "syn0067",
+      "syn0006",
+      "syn0002",
+      "syn0025",
+      "syn0051",
+      "syn0118",
+      "syn0080",
+      "syn0056",
+      "syn0103",
+      "syn0099",
+      "syn0066",
+      "syn0090"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9173014145810664,
+        "balanced_accuracy": 0.7752704530087897,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9503876154792018,
+            "lo": 0.8763221172552255,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6,
+            "lo": 0.2520483193277311,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.038369471565619234,
+            "lo": 0.009443548952274162,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 58,
+          "fp": 18,
+          "n": 919,
+          "tn": 765,
+          "tp": 78
+        },
+        "f1": 0.6724137931034482,
+        "fnr": 0.4264705882352941,
+        "fpr": 0.022988505747126436,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8125,
+        "recall": 0.5735294117647058,
+        "specificity": 0.9770114942528736
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 2,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 7
+        },
+        "fst_count": 9,
+        "fst_rate": 0.375,
+        "fst_rate_ci95": [
+          0.21159367559548778,
+          0.5729003755732572
+        ],
+        "fst_share_of_triggers": 0.5625,
+        "mean_trigger_delay_keyframes": 0.14285714285714285,
+        "missed_success_rate": 0.18181818181818182,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7989350912778905,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.948667960408023,
+            "lo": 0.877656860616587,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5541467278307647,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.051921827936367744,
+            "lo": 0.0175197102425876,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 50,
+          "fp": 27,
+          "n": 919,
+          "tn": 756,
+          "tp": 86
+        },
+        "f1": 0.6907630522088354,
+        "fnr": 0.36764705882352944,
+        "fpr": 0.034482758620689655,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7610619469026548,
+        "recall": 0.6323529411764706,
+        "specificity": 0.9655172413793104
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 5
+        },
+        "fst_count": 12,
+        "fst_rate": 0.48,
+        "fst_rate_ci95": [
+          0.30031285954112974,
+          0.6650148304964322
+        ],
+        "fst_share_of_triggers": 0.7058823529411765,
+        "mean_trigger_delay_keyframes": 0.2,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 110,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7369942196531791,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.24415308291991494
+    },
+    "condition": "B_review25_fakesuccess",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.12772133526850507,
+      "human_time_s": 438.32599999999996,
+      "human_time_s_capped": 438.32599999999996,
+      "mean_s_per_episode": 19.923909090909092,
+      "median_s_per_episode": 18.532,
+      "n_corrections": 88,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 689,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.636177068214804,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "78cfd447e68a6a03",
+      "model": "6354790c83c30d25",
+      "selected": "a598eed019c5d2d4",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 69,
+      "failure": 2190,
+      "human_labeled": 689,
+      "invalid": 25,
+      "n_excluded": 117,
+      "n_total": 2847,
+      "n_trainable": 2730,
+      "no_label": 23,
+      "success": 540,
+      "vlm_labeled": 2110
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9320825515947467,
+      "balanced_accuracy": 0.9221480313196213,
+      "counts": {
+        "fn": 38,
+        "fp": 143,
+        "n": 2665,
+        "tn": 2110,
+        "tp": 374
+      },
+      "f1": 0.805166846071044,
+      "fnr": 0.09223300970873786,
+      "fpr": 0.06347092765201953,
+      "n": 2665,
+      "n_label_excluded": 62,
+      "n_ref_excluded": 95,
+      "precision": 0.723404255319149,
+      "recall": 0.9077669902912622,
+      "specificity": 0.9365290723479804
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9164835164835164,
+      "balanced_accuracy": 0.9087742881583771,
+      "counts": {
+        "fn": 40,
+        "fp": 188,
+        "n": 2730,
+        "tn": 2150,
+        "tp": 352
+      },
+      "f1": 0.7553648068669527,
+      "fnr": 0.10204081632653061,
+      "fpr": 0.08041060735671514,
+      "n": 2730,
+      "n_label_excluded": 92,
+      "n_ref_excluded": 0,
+      "precision": 0.6518518518518519,
+      "recall": 0.8979591836734694,
+      "specificity": 0.9195893926432849
+    },
+    "policy": "fake_success_priority",
+    "replicate": 2,
+    "selected_episodes": [
+      "syn0077",
+      "syn0037",
+      "syn0007",
+      "syn0011",
+      "syn0098",
+      "syn0082",
+      "syn0084",
+      "syn0099",
+      "syn0089",
+      "syn0041",
+      "syn0118",
+      "syn0083",
+      "syn0034",
+      "syn0048",
+      "syn0067",
+      "syn0090",
+      "syn0101",
+      "syn0017",
+      "syn0022",
+      "syn0057",
+      "syn0046",
+      "syn0039"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9140369967355821,
+        "balanced_accuracy": 0.7733547441965292,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9477918326338015,
+            "lo": 0.8732370221327967,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6041704136690647,
+            "lo": 0.24198726114649682,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04367859141590254,
+            "lo": 0.01210784784977248,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 58,
+          "fp": 21,
+          "n": 919,
+          "tn": 762,
+          "tp": 78
+        },
+        "f1": 0.6638297872340425,
+        "fnr": 0.4264705882352941,
+        "fpr": 0.02681992337164751,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7878787878787878,
+        "recall": 0.5735294117647058,
+        "specificity": 0.9731800766283525
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 3,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 12,
+        "fst_rate": 0.46153846153846156,
+        "fst_rate_ci95": [
+          0.2875585353039122,
+          0.6454206125314121
+        ],
+        "fst_share_of_triggers": 0.6666666666666666,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.15384615384615385,
+        "n_ambiguous_trigger_excluded": 3,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9151251360174102,
+        "balanced_accuracy": 0.8074102246262489,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9454545454545454,
+            "lo": 0.8787473910426266,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5235605793006004,
+            "lo": 0.18177854122621565,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.05822910554111828,
+            "lo": 0.022244913171121754,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 47,
+          "fp": 31,
+          "n": 919,
+          "tn": 752,
+          "tp": 89
+        },
+        "f1": 0.6953125,
+        "fnr": 0.34558823529411764,
+        "fpr": 0.03959131545338442,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7416666666666667,
+        "recall": 0.6544117647058824,
+        "specificity": 0.9604086845466155
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 1,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.5416666666666666,
+        "fst_rate_ci95": [
+          0.3507486535891948,
+          0.72108666268789
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 117,
+        "n_val": 585,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7181571815718159,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 0,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.0,
+      "realized_keyframe_fraction": 0.0
+    },
+    "condition": "C_vlm_only",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": null,
+      "human_time_s": 0.0,
+      "human_time_s_capped": 0.0,
+      "mean_s_per_episode": null,
+      "median_s_per_episode": null,
+      "n_corrections": 0,
+      "n_episodes_reviewed": 0,
+      "n_keyframes_reviewed": 0,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": null,
+      "timing_source": "not_applicable"
+    },
+    "fingerprints": {
+      "labels": "3bd589e4555d3b55",
+      "model": "0eb1459d703771d0",
+      "selected": "4f53cda18c2baa0c",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.0,
+    "label_counts": {
+      "ambiguous": 54,
+      "failure": 2164,
+      "human_labeled": 0,
+      "invalid": 25,
+      "n_excluded": 108,
+      "n_total": 2847,
+      "n_trainable": 2739,
+      "no_label": 29,
+      "success": 575,
+      "vlm_labeled": 2793
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9146525679758308,
+      "balanced_accuracy": 0.9019443527797558,
+      "counts": {
+        "fn": 48,
+        "fp": 178,
+        "n": 2648,
+        "tn": 2058,
+        "tp": 364
+      },
+      "f1": 0.7631027253668764,
+      "fnr": 0.11650485436893204,
+      "fpr": 0.07960644007155634,
+      "n": 2648,
+      "n_label_excluded": 79,
+      "n_ref_excluded": 95,
+      "precision": 0.6715867158671587,
+      "recall": 0.883495145631068,
+      "specificity": 0.9203935599284436
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9028842643300474,
+      "balanced_accuracy": 0.8988240500315625,
+      "counts": {
+        "fn": 42,
+        "fp": 224,
+        "n": 2739,
+        "tn": 2122,
+        "tp": 351
+      },
+      "f1": 0.7252066115702479,
+      "fnr": 0.10687022900763359,
+      "fpr": 0.09548167092924126,
+      "n": 2739,
+      "n_label_excluded": 83,
+      "n_ref_excluded": 0,
+      "precision": 0.6104347826086957,
+      "recall": 0.8931297709923665,
+      "specificity": 0.9045183290707587
+    },
+    "policy": "none",
+    "replicate": 2,
+    "selected_episodes": [],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9227421109902068,
+        "balanced_accuracy": 0.8027665089024115,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9524375615907738,
+            "lo": 0.8846362409077159,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5357511806375442,
+            "lo": 0.21510874246339362,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04527607578294094,
+            "lo": 0.011596821526408427,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 50,
+          "fp": 21,
+          "n": 919,
+          "tn": 762,
+          "tp": 86
+        },
+        "f1": 0.7078189300411524,
+        "fnr": 0.36764705882352944,
+        "fpr": 0.02681992337164751,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8037383177570093,
+        "recall": 0.6323529411764706,
+        "specificity": 0.9731800766283525
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 3,
+          "false_trigger": 6,
+          "missed_success": 1,
+          "true_no_trigger": 7,
+          "true_trigger": 7
+        },
+        "fst_count": 9,
+        "fst_rate": 0.375,
+        "fst_rate_ci95": [
+          0.21159367559548778,
+          0.5729003755732572
+        ],
+        "fst_share_of_triggers": 0.5625,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9205658324265505,
+        "balanced_accuracy": 0.7862998647734956,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9525946599843442,
+            "lo": 0.8795919065650805,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5772144877697044,
+            "lo": 0.25513653621495325,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04037198717439644,
+            "lo": 0.00895864566108391,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 55,
+          "fp": 18,
+          "n": 919,
+          "tn": 765,
+          "tp": 81
+        },
+        "f1": 0.6893617021276596,
+        "fnr": 0.40441176470588236,
+        "fpr": 0.022988505747126436,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8181818181818182,
+        "recall": 0.5955882352941176,
+        "specificity": 0.9770114942528736
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 3,
+          "false_trigger": 5,
+          "missed_success": 1,
+          "true_no_trigger": 8,
+          "true_trigger": 7
+        },
+        "fst_count": 8,
+        "fst_rate": 0.3333333333333333,
+        "fst_rate_ci95": [
+          0.1797219032729775,
+          0.5329368316186824
+        ],
+        "fst_share_of_triggers": 0.5333333333333333,
+        "mean_trigger_delay_keyframes": 0.14285714285714285,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 90,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.855704697986577,
+        "value": 0.55
+      }
+    },
+    "budget": {
+      "k": 88,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 1.0,
+      "realized_keyframe_fraction": 1.0
+    },
+    "condition": "A_full_review",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.14138908575478384,
+      "human_time_s": 2576.046,
+      "human_time_s_capped": 2171.3540000000003,
+      "mean_s_per_episode": 29.273249999999997,
+      "median_s_per_episode": 20.2655,
+      "n_corrections": 399,
+      "n_episodes_reviewed": 88,
+      "n_keyframes_reviewed": 2822,
+      "n_time_capped": 2,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.9128440822111976,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "ebee328438bdfa51",
+      "model": "cff935206586c480",
+      "selected": "7a841fb610a5d69d",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 1.0,
+    "label_counts": {
+      "ambiguous": 95,
+      "failure": 2302,
+      "human_labeled": 2822,
+      "invalid": 25,
+      "n_excluded": 120,
+      "n_total": 2847,
+      "n_trainable": 2727,
+      "no_label": 0,
+      "success": 425,
+      "vlm_labeled": 0
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "counts": {
+        "fn": 0,
+        "fp": 0,
+        "n": 2727,
+        "tn": 2302,
+        "tp": 425
+      },
+      "f1": 1.0,
+      "fnr": 0.0,
+      "fpr": 0.0,
+      "n": 2727,
+      "n_label_excluded": 0,
+      "n_ref_excluded": 95,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9831316464979831,
+      "balanced_accuracy": 0.981725904857025,
+      "counts": {
+        "fn": 8,
+        "fp": 38,
+        "n": 2727,
+        "tn": 2294,
+        "tp": 387
+      },
+      "f1": 0.9439024390243904,
+      "fnr": 0.020253164556962026,
+      "fpr": 0.016295025728987993,
+      "n": 2727,
+      "n_label_excluded": 95,
+      "n_ref_excluded": 0,
+      "precision": 0.9105882352941177,
+      "recall": 0.979746835443038,
+      "specificity": 0.983704974271012
+    },
+    "policy": "full",
+    "replicate": 3,
+    "selected_episodes": [
+      "syn0000",
+      "syn0001",
+      "syn0002",
+      "syn0003",
+      "syn0006",
+      "syn0007",
+      "syn0008",
+      "syn0009",
+      "syn0011",
+      "syn0012",
+      "syn0013",
+      "syn0016",
+      "syn0017",
+      "syn0019",
+      "syn0020",
+      "syn0021",
+      "syn0022",
+      "syn0023",
+      "syn0025",
+      "syn0027",
+      "syn0028",
+      "syn0032",
+      "syn0033",
+      "syn0034",
+      "syn0035",
+      "syn0036",
+      "syn0037",
+      "syn0038",
+      "syn0039",
+      "syn0040",
+      "syn0041",
+      "syn0046",
+      "syn0047",
+      "syn0048",
+      "syn0049",
+      "syn0051",
+      "syn0052",
+      "syn0053",
+      "syn0054",
+      "syn0055",
+      "syn0056",
+      "syn0057",
+      "syn0058",
+      "syn0059",
+      "syn0060",
+      "syn0063",
+      "syn0064",
+      "syn0066",
+      "syn0067",
+      "syn0070",
+      "syn0071",
+      "syn0072",
+      "syn0073",
+      "syn0074",
+      "syn0076",
+      "syn0077",
+      "syn0078",
+      "syn0079",
+      "syn0080",
+      "syn0081",
+      "syn0082",
+      "syn0083",
+      "syn0084",
+      "syn0085",
+      "syn0089",
+      "syn0090",
+      "syn0091",
+      "syn0093",
+      "syn0094",
+      "syn0095",
+      "syn0097",
+      "syn0098",
+      "syn0099",
+      "syn0100",
+      "syn0101",
+      "syn0103",
+      "syn0104",
+      "syn0106",
+      "syn0107",
+      "syn0108",
+      "syn0109",
+      "syn0112",
+      "syn0113",
+      "syn0114",
+      "syn0116",
+      "syn0117",
+      "syn0118",
+      "syn0119"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9194776931447225,
+        "balanced_accuracy": 0.7826233941852603,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9533069366194452,
+            "lo": 0.8786443024856012,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.595779121383744,
+            "lo": 0.23565942300487075,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.039292737014508576,
+            "lo": 0.009137786254351611,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 56,
+          "fp": 18,
+          "n": 919,
+          "tn": 765,
+          "tp": 80
+        },
+        "f1": 0.6837606837606838,
+        "fnr": 0.4117647058823529,
+        "fpr": 0.022988505747126436,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8163265306122449,
+        "recall": 0.5882352941176471,
+        "specificity": 0.9770114942528736
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 3,
+          "false_trigger": 6,
+          "missed_success": 2,
+          "true_no_trigger": 7,
+          "true_trigger": 7
+        },
+        "fst_count": 9,
+        "fst_rate": 0.36,
+        "fst_rate_ci95": [
+          0.20247880774458224,
+          0.5548150225183514
+        ],
+        "fst_share_of_triggers": 0.5625,
+        "mean_trigger_delay_keyframes": 0.14285714285714285,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9151251360174102,
+        "balanced_accuracy": 0.7891828187213583,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9476639630356015,
+            "lo": 0.875813641245972,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5772580030487805,
+            "lo": 0.21002061201839228,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.051218030795495584,
+            "lo": 0.014868262394492337,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 53,
+          "fp": 25,
+          "n": 919,
+          "tn": 758,
+          "tp": 83
+        },
+        "f1": 0.680327868852459,
+        "fnr": 0.3897058823529412,
+        "fpr": 0.031928480204342274,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7685185185185185,
+        "recall": 0.6102941176470589,
+        "specificity": 0.9680715197956578
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 1,
+          "true_no_trigger": 6,
+          "true_trigger": 5
+        },
+        "fst_count": 12,
+        "fst_rate": 0.5,
+        "fst_rate_ci95": [
+          0.3142742581957335,
+          0.6857257418042665
+        ],
+        "fst_share_of_triggers": 0.7058823529411765,
+        "mean_trigger_delay_keyframes": 0.2,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 113,
+        "n_val": 582,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7246376811594203,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.2565556343019135
+    },
+    "condition": "B_review25_random",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.13674033149171272,
+      "human_time_s": 768.373,
+      "human_time_s_capped": 568.63,
+      "mean_s_per_episode": 34.92604545454546,
+      "median_s_per_episode": 18.532,
+      "n_corrections": 99,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 724,
+      "n_time_capped": 1,
+      "n_time_missing": 0,
+      "s_per_keyframe": 1.0612886740331493,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "f503d515bfeb0e26",
+      "model": "b2b651218b29f788",
+      "selected": "fbeac8a4862fbce3",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 67,
+      "failure": 2201,
+      "human_labeled": 724,
+      "invalid": 25,
+      "n_excluded": 115,
+      "n_total": 2847,
+      "n_trainable": 2732,
+      "no_label": 23,
+      "success": 531,
+      "vlm_labeled": 2075
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9369606003752345,
+      "balanced_accuracy": 0.9253279785809906,
+      "counts": {
+        "fn": 38,
+        "fp": 130,
+        "n": 2665,
+        "tn": 2120,
+        "tp": 377
+      },
+      "f1": 0.8177874186550976,
+      "fnr": 0.09156626506024096,
+      "fpr": 0.057777777777777775,
+      "n": 2665,
+      "n_label_excluded": 62,
+      "n_ref_excluded": 95,
+      "precision": 0.7435897435897436,
+      "recall": 0.908433734939759,
+      "specificity": 0.9422222222222222
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9227672035139092,
+      "balanced_accuracy": 0.9158343935768781,
+      "counts": {
+        "fn": 37,
+        "fp": 174,
+        "n": 2732,
+        "tn": 2164,
+        "tp": 357
+      },
+      "f1": 0.7718918918918919,
+      "fnr": 0.09390862944162437,
+      "fpr": 0.07442258340461934,
+      "n": 2732,
+      "n_label_excluded": 90,
+      "n_ref_excluded": 0,
+      "precision": 0.672316384180791,
+      "recall": 0.9060913705583756,
+      "specificity": 0.9255774165953806
+    },
+    "policy": "random",
+    "replicate": 3,
+    "selected_episodes": [
+      "syn0101",
+      "syn0076",
+      "syn0041",
+      "syn0023",
+      "syn0049",
+      "syn0007",
+      "syn0013",
+      "syn0085",
+      "syn0118",
+      "syn0059",
+      "syn0056",
+      "syn0017",
+      "syn0083",
+      "syn0053",
+      "syn0057",
+      "syn0001",
+      "syn0003",
+      "syn0107",
+      "syn0034",
+      "syn0011",
+      "syn0027",
+      "syn0113"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9140369967355821,
+        "balanced_accuracy": 0.7763926451806776,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9476120252949377,
+            "lo": 0.8733793149112739,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6010897277736655,
+            "lo": 0.23594789952050382,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04568207520497596,
+            "lo": 0.013017477448453609,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 57,
+          "fp": 22,
+          "n": 919,
+          "tn": 761,
+          "tp": 79
+        },
+        "f1": 0.6666666666666667,
+        "fnr": 0.41911764705882354,
+        "fpr": 0.0280970625798212,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7821782178217822,
+        "recall": 0.5808823529411765,
+        "specificity": 0.9719029374201787
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 4,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 11,
+        "fst_rate": 0.44,
+        "fst_rate_ci95": [
+          0.26665638881067344,
+          0.6293266813020123
+        ],
+        "fst_share_of_triggers": 0.6470588235294118,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9183895538628944,
+        "balanced_accuracy": 0.8123638344226579,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9477287560623259,
+            "lo": 0.8839852080453584,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5108264607825934,
+            "lo": 0.17185989295580112,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.05687011105973824,
+            "lo": 0.018704392268270944,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 46,
+          "fp": 29,
+          "n": 919,
+          "tn": 754,
+          "tp": 90
+        },
+        "f1": 0.7058823529411765,
+        "fnr": 0.3382352941176471,
+        "fpr": 0.037037037037037035,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7563025210084033,
+        "recall": 0.6617647058823529,
+        "specificity": 0.9629629629629629
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.52,
+        "fst_rate_ci95": [
+          0.3349851695035678,
+          0.6996871404588704
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 99,
+        "n_val": 586,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.766016713091922,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.27604535790219703
+    },
+    "condition": "B_review25_lowconf",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.17329910141206675,
+      "human_time_s": 843.0379999999999,
+      "human_time_s_capped": 638.0889999999999,
+      "mean_s_per_episode": 38.31990909090909,
+      "median_s_per_episode": 25.7105,
+      "n_corrections": 135,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 779,
+      "n_time_capped": 1,
+      "n_time_missing": 0,
+      "s_per_keyframe": 1.0822053915275993,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "12d6fc6ccc931504",
+      "model": "f595e690a16f3b55",
+      "selected": "ea006d7605429d99",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 57,
+      "failure": 2221,
+      "human_labeled": 779,
+      "invalid": 25,
+      "n_excluded": 97,
+      "n_total": 2847,
+      "n_trainable": 2750,
+      "no_label": 15,
+      "success": 529,
+      "vlm_labeled": 2028
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9422718808193669,
+      "balanced_accuracy": 0.9335357111136489,
+      "counts": {
+        "fn": 33,
+        "fp": 122,
+        "n": 2685,
+        "tn": 2146,
+        "tp": 384
+      },
+      "f1": 0.8320693391115925,
+      "fnr": 0.07913669064748201,
+      "fpr": 0.053791887125220456,
+      "n": 2685,
+      "n_label_excluded": 42,
+      "n_ref_excluded": 95,
+      "precision": 0.758893280632411,
+      "recall": 0.920863309352518,
+      "specificity": 0.9462081128747796
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9298181818181818,
+      "balanced_accuracy": 0.9274992919852733,
+      "counts": {
+        "fn": 30,
+        "fp": 163,
+        "n": 2750,
+        "tn": 2191,
+        "tp": 366
+      },
+      "f1": 0.7913513513513513,
+      "fnr": 0.07575757575757576,
+      "fpr": 0.06924384027187766,
+      "n": 2750,
+      "n_label_excluded": 72,
+      "n_ref_excluded": 0,
+      "precision": 0.6918714555765595,
+      "recall": 0.9242424242424242,
+      "specificity": 0.9307561597281223
+    },
+    "policy": "low_confidence",
+    "replicate": 3,
+    "selected_episodes": [
+      "syn0079",
+      "syn0073",
+      "syn0097",
+      "syn0109",
+      "syn0116",
+      "syn0063",
+      "syn0009",
+      "syn0060",
+      "syn0023",
+      "syn0028",
+      "syn0067",
+      "syn0006",
+      "syn0002",
+      "syn0025",
+      "syn0051",
+      "syn0118",
+      "syn0080",
+      "syn0056",
+      "syn0103",
+      "syn0099",
+      "syn0066",
+      "syn0090"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9173014145810664,
+        "balanced_accuracy": 0.7752704530087897,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9503876154792018,
+            "lo": 0.8769532866241242,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6,
+            "lo": 0.2520483193277311,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.038802153760039246,
+            "lo": 0.009614071038251367,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 58,
+          "fp": 18,
+          "n": 919,
+          "tn": 765,
+          "tp": 78
+        },
+        "f1": 0.6724137931034482,
+        "fnr": 0.4264705882352941,
+        "fpr": 0.022988505747126436,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8125,
+        "recall": 0.5735294117647058,
+        "specificity": 0.9770114942528736
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 2,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 7
+        },
+        "fst_count": 9,
+        "fst_rate": 0.375,
+        "fst_rate_ci95": [
+          0.21159367559548778,
+          0.5729003755732572
+        ],
+        "fst_share_of_triggers": 0.5625,
+        "mean_trigger_delay_keyframes": 0.14285714285714285,
+        "missed_success_rate": 0.18181818181818182,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7989350912778905,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.948667960408023,
+            "lo": 0.877656860616587,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5541467278307647,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.051921827936367744,
+            "lo": 0.0175197102425876,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 50,
+          "fp": 27,
+          "n": 919,
+          "tn": 756,
+          "tp": 86
+        },
+        "f1": 0.6907630522088354,
+        "fnr": 0.36764705882352944,
+        "fpr": 0.034482758620689655,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7610619469026548,
+        "recall": 0.6323529411764706,
+        "specificity": 0.9655172413793104
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 5
+        },
+        "fst_count": 12,
+        "fst_rate": 0.48,
+        "fst_rate_ci95": [
+          0.30031285954112974,
+          0.6650148304964322
+        ],
+        "fst_share_of_triggers": 0.7058823529411765,
+        "mean_trigger_delay_keyframes": 0.2,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 110,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7285714285714285,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.24415308291991494
+    },
+    "condition": "B_review25_fakesuccess",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.12772133526850507,
+      "human_time_s": 438.32599999999996,
+      "human_time_s_capped": 438.32599999999996,
+      "mean_s_per_episode": 19.923909090909092,
+      "median_s_per_episode": 18.532,
+      "n_corrections": 88,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 689,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.636177068214804,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "78cfd447e68a6a03",
+      "model": "e02fe45c51e87224",
+      "selected": "a598eed019c5d2d4",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 69,
+      "failure": 2190,
+      "human_labeled": 689,
+      "invalid": 25,
+      "n_excluded": 117,
+      "n_total": 2847,
+      "n_trainable": 2730,
+      "no_label": 23,
+      "success": 540,
+      "vlm_labeled": 2110
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9320825515947467,
+      "balanced_accuracy": 0.9221480313196213,
+      "counts": {
+        "fn": 38,
+        "fp": 143,
+        "n": 2665,
+        "tn": 2110,
+        "tp": 374
+      },
+      "f1": 0.805166846071044,
+      "fnr": 0.09223300970873786,
+      "fpr": 0.06347092765201953,
+      "n": 2665,
+      "n_label_excluded": 62,
+      "n_ref_excluded": 95,
+      "precision": 0.723404255319149,
+      "recall": 0.9077669902912622,
+      "specificity": 0.9365290723479804
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9164835164835164,
+      "balanced_accuracy": 0.9087742881583771,
+      "counts": {
+        "fn": 40,
+        "fp": 188,
+        "n": 2730,
+        "tn": 2150,
+        "tp": 352
+      },
+      "f1": 0.7553648068669527,
+      "fnr": 0.10204081632653061,
+      "fpr": 0.08041060735671514,
+      "n": 2730,
+      "n_label_excluded": 92,
+      "n_ref_excluded": 0,
+      "precision": 0.6518518518518519,
+      "recall": 0.8979591836734694,
+      "specificity": 0.9195893926432849
+    },
+    "policy": "fake_success_priority",
+    "replicate": 3,
+    "selected_episodes": [
+      "syn0077",
+      "syn0037",
+      "syn0007",
+      "syn0011",
+      "syn0098",
+      "syn0082",
+      "syn0084",
+      "syn0099",
+      "syn0089",
+      "syn0041",
+      "syn0118",
+      "syn0083",
+      "syn0034",
+      "syn0048",
+      "syn0067",
+      "syn0090",
+      "syn0101",
+      "syn0017",
+      "syn0022",
+      "syn0057",
+      "syn0046",
+      "syn0039"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9151251360174102,
+        "balanced_accuracy": 0.7770312147847644,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9484464311508223,
+            "lo": 0.8745421735451847,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6010897277736655,
+            "lo": 0.23594789952050382,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04367859141590254,
+            "lo": 0.01210784784977248,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 57,
+          "fp": 21,
+          "n": 919,
+          "tn": 762,
+          "tp": 79
+        },
+        "f1": 0.6694915254237288,
+        "fnr": 0.41911764705882354,
+        "fpr": 0.02681992337164751,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.79,
+        "recall": 0.5808823529411765,
+        "specificity": 0.9731800766283525
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 3,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 12,
+        "fst_rate": 0.46153846153846156,
+        "fst_rate_ci95": [
+          0.2875585353039122,
+          0.6454206125314121
+        ],
+        "fst_share_of_triggers": 0.6666666666666666,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.15384615384615385,
+        "n_ambiguous_trigger_excluded": 3,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9140369967355821,
+        "balanced_accuracy": 0.8037337540380136,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.944687114248391,
+            "lo": 0.8775340864397151,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5319148936170213,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.05993072569063107,
+            "lo": 0.021060591176303312,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 48,
+          "fp": 31,
+          "n": 919,
+          "tn": 752,
+          "tp": 88
+        },
+        "f1": 0.6901960784313727,
+        "fnr": 0.35294117647058826,
+        "fpr": 0.03959131545338442,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7394957983193278,
+        "recall": 0.6470588235294118,
+        "specificity": 0.9604086845466155
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.52,
+        "fst_rate_ci95": [
+          0.3349851695035678,
+          0.6996871404588704
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 117,
+        "n_val": 585,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.726027397260274,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 0,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.0,
+      "realized_keyframe_fraction": 0.0
+    },
+    "condition": "C_vlm_only",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": null,
+      "human_time_s": 0.0,
+      "human_time_s_capped": 0.0,
+      "mean_s_per_episode": null,
+      "median_s_per_episode": null,
+      "n_corrections": 0,
+      "n_episodes_reviewed": 0,
+      "n_keyframes_reviewed": 0,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": null,
+      "timing_source": "not_applicable"
+    },
+    "fingerprints": {
+      "labels": "3bd589e4555d3b55",
+      "model": "5c2902ceb370a987",
+      "selected": "4f53cda18c2baa0c",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.0,
+    "label_counts": {
+      "ambiguous": 54,
+      "failure": 2164,
+      "human_labeled": 0,
+      "invalid": 25,
+      "n_excluded": 108,
+      "n_total": 2847,
+      "n_trainable": 2739,
+      "no_label": 29,
+      "success": 575,
+      "vlm_labeled": 2793
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9146525679758308,
+      "balanced_accuracy": 0.9019443527797558,
+      "counts": {
+        "fn": 48,
+        "fp": 178,
+        "n": 2648,
+        "tn": 2058,
+        "tp": 364
+      },
+      "f1": 0.7631027253668764,
+      "fnr": 0.11650485436893204,
+      "fpr": 0.07960644007155634,
+      "n": 2648,
+      "n_label_excluded": 79,
+      "n_ref_excluded": 95,
+      "precision": 0.6715867158671587,
+      "recall": 0.883495145631068,
+      "specificity": 0.9203935599284436
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9028842643300474,
+      "balanced_accuracy": 0.8988240500315625,
+      "counts": {
+        "fn": 42,
+        "fp": 224,
+        "n": 2739,
+        "tn": 2122,
+        "tp": 351
+      },
+      "f1": 0.7252066115702479,
+      "fnr": 0.10687022900763359,
+      "fpr": 0.09548167092924126,
+      "n": 2739,
+      "n_label_excluded": 83,
+      "n_ref_excluded": 0,
+      "precision": 0.6104347826086957,
+      "recall": 0.8931297709923665,
+      "specificity": 0.9045183290707587
+    },
+    "policy": "none",
+    "replicate": 3,
+    "selected_episodes": [],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9227421109902068,
+        "balanced_accuracy": 0.8027665089024115,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9524375615907738,
+            "lo": 0.8846362409077159,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5357511806375442,
+            "lo": 0.21510874246339362,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04527607578294094,
+            "lo": 0.011596821526408427,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 50,
+          "fp": 21,
+          "n": 919,
+          "tn": 762,
+          "tp": 86
+        },
+        "f1": 0.7078189300411524,
+        "fnr": 0.36764705882352944,
+        "fpr": 0.02681992337164751,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8037383177570093,
+        "recall": 0.6323529411764706,
+        "specificity": 0.9731800766283525
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 3,
+          "false_trigger": 6,
+          "missed_success": 1,
+          "true_no_trigger": 7,
+          "true_trigger": 7
+        },
+        "fst_count": 9,
+        "fst_rate": 0.375,
+        "fst_rate_ci95": [
+          0.21159367559548778,
+          0.5729003755732572
+        ],
+        "fst_share_of_triggers": 0.5625,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9216539717083787,
+        "balanced_accuracy": 0.7899763353617308,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9530445576784016,
+            "lo": 0.8805666769126653,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5693536750976065,
+            "lo": 0.25,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04037198717439644,
+            "lo": 0.00895864566108391,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 54,
+          "fp": 18,
+          "n": 919,
+          "tn": 765,
+          "tp": 82
+        },
+        "f1": 0.6949152542372881,
+        "fnr": 0.39705882352941174,
+        "fpr": 0.022988505747126436,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.82,
+        "recall": 0.6029411764705882,
+        "specificity": 0.9770114942528736
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 3,
+          "false_trigger": 5,
+          "missed_success": 1,
+          "true_no_trigger": 8,
+          "true_trigger": 7
+        },
+        "fst_count": 8,
+        "fst_rate": 0.3333333333333333,
+        "fst_rate_ci95": [
+          0.1797219032729775,
+          0.5329368316186824
+        ],
+        "fst_share_of_triggers": 0.5333333333333333,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 90,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.8609271523178809,
+        "value": 0.55
+      }
+    },
+    "budget": {
+      "k": 88,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 1.0,
+      "realized_keyframe_fraction": 1.0
+    },
+    "condition": "A_full_review",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.14138908575478384,
+      "human_time_s": 2576.046,
+      "human_time_s_capped": 2171.3540000000003,
+      "mean_s_per_episode": 29.273249999999997,
+      "median_s_per_episode": 20.2655,
+      "n_corrections": 399,
+      "n_episodes_reviewed": 88,
+      "n_keyframes_reviewed": 2822,
+      "n_time_capped": 2,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.9128440822111976,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "ebee328438bdfa51",
+      "model": "618ffe02095a3296",
+      "selected": "7a841fb610a5d69d",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 1.0,
+    "label_counts": {
+      "ambiguous": 95,
+      "failure": 2302,
+      "human_labeled": 2822,
+      "invalid": 25,
+      "n_excluded": 120,
+      "n_total": 2847,
+      "n_trainable": 2727,
+      "no_label": 0,
+      "success": 425,
+      "vlm_labeled": 0
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "counts": {
+        "fn": 0,
+        "fp": 0,
+        "n": 2727,
+        "tn": 2302,
+        "tp": 425
+      },
+      "f1": 1.0,
+      "fnr": 0.0,
+      "fpr": 0.0,
+      "n": 2727,
+      "n_label_excluded": 0,
+      "n_ref_excluded": 95,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9831316464979831,
+      "balanced_accuracy": 0.981725904857025,
+      "counts": {
+        "fn": 8,
+        "fp": 38,
+        "n": 2727,
+        "tn": 2294,
+        "tp": 387
+      },
+      "f1": 0.9439024390243904,
+      "fnr": 0.020253164556962026,
+      "fpr": 0.016295025728987993,
+      "n": 2727,
+      "n_label_excluded": 95,
+      "n_ref_excluded": 0,
+      "precision": 0.9105882352941177,
+      "recall": 0.979746835443038,
+      "specificity": 0.983704974271012
+    },
+    "policy": "full",
+    "replicate": 4,
+    "selected_episodes": [
+      "syn0000",
+      "syn0001",
+      "syn0002",
+      "syn0003",
+      "syn0006",
+      "syn0007",
+      "syn0008",
+      "syn0009",
+      "syn0011",
+      "syn0012",
+      "syn0013",
+      "syn0016",
+      "syn0017",
+      "syn0019",
+      "syn0020",
+      "syn0021",
+      "syn0022",
+      "syn0023",
+      "syn0025",
+      "syn0027",
+      "syn0028",
+      "syn0032",
+      "syn0033",
+      "syn0034",
+      "syn0035",
+      "syn0036",
+      "syn0037",
+      "syn0038",
+      "syn0039",
+      "syn0040",
+      "syn0041",
+      "syn0046",
+      "syn0047",
+      "syn0048",
+      "syn0049",
+      "syn0051",
+      "syn0052",
+      "syn0053",
+      "syn0054",
+      "syn0055",
+      "syn0056",
+      "syn0057",
+      "syn0058",
+      "syn0059",
+      "syn0060",
+      "syn0063",
+      "syn0064",
+      "syn0066",
+      "syn0067",
+      "syn0070",
+      "syn0071",
+      "syn0072",
+      "syn0073",
+      "syn0074",
+      "syn0076",
+      "syn0077",
+      "syn0078",
+      "syn0079",
+      "syn0080",
+      "syn0081",
+      "syn0082",
+      "syn0083",
+      "syn0084",
+      "syn0085",
+      "syn0089",
+      "syn0090",
+      "syn0091",
+      "syn0093",
+      "syn0094",
+      "syn0095",
+      "syn0097",
+      "syn0098",
+      "syn0099",
+      "syn0100",
+      "syn0101",
+      "syn0103",
+      "syn0104",
+      "syn0106",
+      "syn0107",
+      "syn0108",
+      "syn0109",
+      "syn0112",
+      "syn0113",
+      "syn0114",
+      "syn0116",
+      "syn0117",
+      "syn0118",
+      "syn0119"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9194776931447225,
+        "balanced_accuracy": 0.7917370971377057,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9514980042332659,
+            "lo": 0.8807634717884503,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5786420265780731,
+            "lo": 0.20988481184196808,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04617468022255363,
+            "lo": 0.011299942966365571,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 53,
+          "fp": 21,
+          "n": 919,
+          "tn": 762,
+          "tp": 83
+        },
+        "f1": 0.6916666666666667,
+        "fnr": 0.3897058823529412,
+        "fpr": 0.02681992337164751,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7980769230769231,
+        "recall": 0.6102941176470589,
+        "specificity": 0.9731800766283525
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 4,
+          "false_trigger": 6,
+          "missed_success": 2,
+          "true_no_trigger": 7,
+          "true_trigger": 6
+        },
+        "fst_count": 10,
+        "fst_rate": 0.4,
+        "fst_rate_ci95": [
+          0.23403302377747973,
+          0.5926054264103301
+        ],
+        "fst_share_of_triggers": 0.625,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9194776931447225,
+        "balanced_accuracy": 0.8099645030425964,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9489420477254027,
+            "lo": 0.8844724765618155,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.53573606271777,
+            "lo": 0.1822999316005472,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.054549502660189673,
+            "lo": 0.017542679039455975,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 47,
+          "fp": 27,
+          "n": 919,
+          "tn": 756,
+          "tp": 89
+        },
+        "f1": 0.7063492063492064,
+        "fnr": 0.34558823529411764,
+        "fpr": 0.034482758620689655,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7672413793103449,
+        "recall": 0.6544117647058824,
+        "specificity": 0.9655172413793104
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 6,
+          "false_trigger": 6,
+          "missed_success": 1,
+          "true_no_trigger": 7,
+          "true_trigger": 4
+        },
+        "fst_count": 12,
+        "fst_rate": 0.5,
+        "fst_rate_ci95": [
+          0.3142742581957335,
+          0.6857257418042665
+        ],
+        "fst_share_of_triggers": 0.75,
+        "mean_trigger_delay_keyframes": 0.0,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 106,
+        "n_val": 583,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7571428571428572,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.25336640680368533
+    },
+    "condition": "B_review25_random",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.15104895104895105,
+      "human_time_s": 1106.588,
+      "human_time_s_capped": 701.896,
+      "mean_s_per_episode": 50.299454545454545,
+      "median_s_per_episode": 21.750500000000002,
+      "n_corrections": 108,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 715,
+      "n_time_capped": 2,
+      "n_time_missing": 0,
+      "s_per_keyframe": 1.5476755244755245,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "303e6b10ea7e5c12",
+      "model": "4b7bca99240afadf",
+      "selected": "a67c85c294ae1f68",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 67,
+      "failure": 2201,
+      "human_labeled": 715,
+      "invalid": 25,
+      "n_excluded": 114,
+      "n_total": 2847,
+      "n_trainable": 2733,
+      "no_label": 22,
+      "success": 532,
+      "vlm_labeled": 2085
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9399849962490623,
+      "balanced_accuracy": 0.9302434441952885,
+      "counts": {
+        "fn": 35,
+        "fp": 125,
+        "n": 2666,
+        "tn": 2124,
+        "tp": 382
+      },
+      "f1": 0.8268398268398268,
+      "fnr": 0.08393285371702638,
+      "fpr": 0.05558025789239662,
+      "n": 2666,
+      "n_label_excluded": 61,
+      "n_ref_excluded": 95,
+      "precision": 0.7534516765285996,
+      "recall": 0.9160671462829736,
+      "specificity": 0.9444197421076034
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.92938163190633,
+      "balanced_accuracy": 0.9301787694917466,
+      "counts": {
+        "fn": 27,
+        "fp": 166,
+        "n": 2733,
+        "tn": 2174,
+        "tp": 366
+      },
+      "f1": 0.7913513513513515,
+      "fnr": 0.06870229007633588,
+      "fpr": 0.07094017094017094,
+      "n": 2733,
+      "n_label_excluded": 89,
+      "n_ref_excluded": 0,
+      "precision": 0.6879699248120301,
+      "recall": 0.9312977099236641,
+      "specificity": 0.9290598290598291
+    },
+    "policy": "random",
+    "replicate": 4,
+    "selected_episodes": [
+      "syn0023",
+      "syn0051",
+      "syn0094",
+      "syn0039",
+      "syn0027",
+      "syn0021",
+      "syn0053",
+      "syn0020",
+      "syn0117",
+      "syn0109",
+      "syn0107",
+      "syn0052",
+      "syn0079",
+      "syn0099",
+      "syn0009",
+      "syn0016",
+      "syn0091",
+      "syn0070",
+      "syn0059",
+      "syn0006",
+      "syn0077",
+      "syn0028"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9140369967355821,
+        "balanced_accuracy": 0.7763926451806776,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9476120252949377,
+            "lo": 0.8733793149112739,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6010897277736655,
+            "lo": 0.23594789952050382,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04568207520497596,
+            "lo": 0.013017477448453609,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 57,
+          "fp": 22,
+          "n": 919,
+          "tn": 761,
+          "tp": 79
+        },
+        "f1": 0.6666666666666667,
+        "fnr": 0.41911764705882354,
+        "fpr": 0.0280970625798212,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7821782178217822,
+        "recall": 0.5808823529411765,
+        "specificity": 0.9719029374201787
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 4,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 11,
+        "fst_rate": 0.44,
+        "fst_rate_ci95": [
+          0.26665638881067344,
+          0.6293266813020123
+        ],
+        "fst_share_of_triggers": 0.6470588235294118,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.8080487942303358,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9462122410817031,
+            "lo": 0.8811559804221475,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5158956535634388,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.0579752275025278,
+            "lo": 0.019820411154357596,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 47,
+          "fp": 30,
+          "n": 919,
+          "tn": 753,
+          "tp": 89
+        },
+        "f1": 0.6980392156862746,
+        "fnr": 0.34558823529411764,
+        "fpr": 0.038314176245210725,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7478991596638656,
+        "recall": 0.6544117647058824,
+        "specificity": 0.9616858237547893
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 4,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.52,
+        "fst_rate_ci95": [
+          0.3349851695035678,
+          0.6996871404588704
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.16666666666666666,
+        "n_ambiguous_trigger_excluded": 4,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 99,
+        "n_val": 586,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.766016713091922,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.27604535790219703
+    },
+    "condition": "B_review25_lowconf",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.17329910141206675,
+      "human_time_s": 843.0379999999999,
+      "human_time_s_capped": 638.0889999999999,
+      "mean_s_per_episode": 38.31990909090909,
+      "median_s_per_episode": 25.7105,
+      "n_corrections": 135,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 779,
+      "n_time_capped": 1,
+      "n_time_missing": 0,
+      "s_per_keyframe": 1.0822053915275993,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "12d6fc6ccc931504",
+      "model": "c93506f403117c3c",
+      "selected": "ea006d7605429d99",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 57,
+      "failure": 2221,
+      "human_labeled": 779,
+      "invalid": 25,
+      "n_excluded": 97,
+      "n_total": 2847,
+      "n_trainable": 2750,
+      "no_label": 15,
+      "success": 529,
+      "vlm_labeled": 2028
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9422718808193669,
+      "balanced_accuracy": 0.9335357111136489,
+      "counts": {
+        "fn": 33,
+        "fp": 122,
+        "n": 2685,
+        "tn": 2146,
+        "tp": 384
+      },
+      "f1": 0.8320693391115925,
+      "fnr": 0.07913669064748201,
+      "fpr": 0.053791887125220456,
+      "n": 2685,
+      "n_label_excluded": 42,
+      "n_ref_excluded": 95,
+      "precision": 0.758893280632411,
+      "recall": 0.920863309352518,
+      "specificity": 0.9462081128747796
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9298181818181818,
+      "balanced_accuracy": 0.9274992919852733,
+      "counts": {
+        "fn": 30,
+        "fp": 163,
+        "n": 2750,
+        "tn": 2191,
+        "tp": 366
+      },
+      "f1": 0.7913513513513513,
+      "fnr": 0.07575757575757576,
+      "fpr": 0.06924384027187766,
+      "n": 2750,
+      "n_label_excluded": 72,
+      "n_ref_excluded": 0,
+      "precision": 0.6918714555765595,
+      "recall": 0.9242424242424242,
+      "specificity": 0.9307561597281223
+    },
+    "policy": "low_confidence",
+    "replicate": 4,
+    "selected_episodes": [
+      "syn0079",
+      "syn0073",
+      "syn0097",
+      "syn0109",
+      "syn0116",
+      "syn0063",
+      "syn0009",
+      "syn0060",
+      "syn0023",
+      "syn0028",
+      "syn0067",
+      "syn0006",
+      "syn0002",
+      "syn0025",
+      "syn0051",
+      "syn0118",
+      "syn0080",
+      "syn0056",
+      "syn0103",
+      "syn0099",
+      "syn0066",
+      "syn0090"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7746318834047028,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9491726732769871,
+            "lo": 0.8759057902499906,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6,
+            "lo": 0.2520483193277311,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.040560244660137884,
+            "lo": 0.010327519379844961,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 58,
+          "fp": 19,
+          "n": 919,
+          "tn": 764,
+          "tp": 78
+        },
+        "f1": 0.6695278969957081,
+        "fnr": 0.4264705882352941,
+        "fpr": 0.024265644955300127,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.8041237113402062,
+        "recall": 0.5735294117647058,
+        "specificity": 0.9757343550446999
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 2,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 7
+        },
+        "fst_count": 9,
+        "fst_rate": 0.375,
+        "fst_rate_ci95": [
+          0.21159367559548778,
+          0.5729003755732572
+        ],
+        "fst_share_of_triggers": 0.5625,
+        "mean_trigger_delay_keyframes": 0.14285714285714285,
+        "missed_success_rate": 0.18181818181818182,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9162132752992383,
+        "balanced_accuracy": 0.7989350912778905,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.948667960408023,
+            "lo": 0.877656860616587,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5541467278307647,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.051921827936367744,
+            "lo": 0.0175197102425876,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 50,
+          "fp": 27,
+          "n": 919,
+          "tn": 756,
+          "tp": 86
+        },
+        "f1": 0.6907630522088354,
+        "fnr": 0.36764705882352944,
+        "fpr": 0.034482758620689655,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7610619469026548,
+        "recall": 0.6323529411764706,
+        "specificity": 0.9655172413793104
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 1,
+          "true_no_trigger": 6,
+          "true_trigger": 5
+        },
+        "fst_count": 12,
+        "fst_rate": 0.5,
+        "fst_rate_ci95": [
+          0.3142742581957335,
+          0.6857257418042665
+        ],
+        "fst_share_of_triggers": 0.7058823529411765,
+        "mean_trigger_delay_keyframes": 0.2,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 110,
+        "n_val": 581,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.7402234636871509,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 22,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.25,
+      "realized_keyframe_fraction": 0.24415308291991494
+    },
+    "condition": "B_review25_fakesuccess",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": 0.12772133526850507,
+      "human_time_s": 438.32599999999996,
+      "human_time_s_capped": 438.32599999999996,
+      "mean_s_per_episode": 19.923909090909092,
+      "median_s_per_episode": 18.532,
+      "n_corrections": 88,
+      "n_episodes_reviewed": 22,
+      "n_keyframes_reviewed": 689,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": 0.636177068214804,
+      "timing_source": "simulated"
+    },
+    "fingerprints": {
+      "labels": "78cfd447e68a6a03",
+      "model": "b59b87b92586b212",
+      "selected": "a598eed019c5d2d4",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.25,
+    "label_counts": {
+      "ambiguous": 69,
+      "failure": 2190,
+      "human_labeled": 689,
+      "invalid": 25,
+      "n_excluded": 117,
+      "n_total": 2847,
+      "n_trainable": 2730,
+      "no_label": 23,
+      "success": 540,
+      "vlm_labeled": 2110
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9320825515947467,
+      "balanced_accuracy": 0.9221480313196213,
+      "counts": {
+        "fn": 38,
+        "fp": 143,
+        "n": 2665,
+        "tn": 2110,
+        "tp": 374
+      },
+      "f1": 0.805166846071044,
+      "fnr": 0.09223300970873786,
+      "fpr": 0.06347092765201953,
+      "n": 2665,
+      "n_label_excluded": 62,
+      "n_ref_excluded": 95,
+      "precision": 0.723404255319149,
+      "recall": 0.9077669902912622,
+      "specificity": 0.9365290723479804
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9164835164835164,
+      "balanced_accuracy": 0.9087742881583771,
+      "counts": {
+        "fn": 40,
+        "fp": 188,
+        "n": 2730,
+        "tn": 2150,
+        "tp": 352
+      },
+      "f1": 0.7553648068669527,
+      "fnr": 0.10204081632653061,
+      "fpr": 0.08041060735671514,
+      "n": 2730,
+      "n_label_excluded": 92,
+      "n_ref_excluded": 0,
+      "precision": 0.6518518518518519,
+      "recall": 0.8979591836734694,
+      "specificity": 0.9195893926432849
+    },
+    "policy": "fake_success_priority",
+    "replicate": 4,
+    "selected_episodes": [
+      "syn0077",
+      "syn0037",
+      "syn0007",
+      "syn0011",
+      "syn0098",
+      "syn0082",
+      "syn0084",
+      "syn0099",
+      "syn0089",
+      "syn0041",
+      "syn0118",
+      "syn0083",
+      "syn0034",
+      "syn0048",
+      "syn0067",
+      "syn0090",
+      "syn0101",
+      "syn0017",
+      "syn0022",
+      "syn0057",
+      "syn0046",
+      "syn0039"
+    ],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  },
+  {
+    "audit": {
+      "keyframe": {
+        "accuracy": 0.9140369967355821,
+        "balanced_accuracy": 0.7733547441965292,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.9477918326338015,
+            "lo": 0.8732370221327967,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.6041704136690647,
+            "lo": 0.24198726114649682,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.04367859141590254,
+            "lo": 0.01210784784977248,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 58,
+          "fp": 21,
+          "n": 919,
+          "tn": 762,
+          "tp": 78
+        },
+        "f1": 0.6638297872340425,
+        "fnr": 0.4264705882352941,
+        "fpr": 0.02681992337164751,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.7878787878787878,
+        "recall": 0.5735294117647058,
+        "specificity": 0.9731800766283525
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 3,
+          "early_trigger": 5,
+          "false_trigger": 7,
+          "missed_success": 2,
+          "true_no_trigger": 6,
+          "true_trigger": 6
+        },
+        "fst_count": 12,
+        "fst_rate": 0.46153846153846156,
+        "fst_rate_ci95": [
+          0.2875585353039122,
+          0.6454206125314121
+        ],
+        "fst_share_of_triggers": 0.6666666666666666,
+        "mean_trigger_delay_keyframes": 0.16666666666666666,
+        "missed_success_rate": 0.15384615384615385,
+        "n_ambiguous_trigger_excluded": 3,
+        "n_episodes": 29
+      }
+    },
+    "audit_secondary_threshold": {
+      "keyframe": {
+        "accuracy": 0.9151251360174102,
+        "balanced_accuracy": 0.801334422657952,
+        "ci95_episode_bootstrap": {
+          "accuracy": {
+            "hi": 0.946469724442142,
+            "lo": 0.8773062897388921,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fnr": {
+            "hi": 0.5468873355263157,
+            "lo": 0.18687262028383522,
+            "n_boot": 1000,
+            "n_valid": 1000
+          },
+          "fpr": {
+            "hi": 0.056245647356758466,
+            "lo": 0.019466706114962585,
+            "n_boot": 1000,
+            "n_valid": 1000
+          }
+        },
+        "counts": {
+          "fn": 49,
+          "fp": 29,
+          "n": 919,
+          "tn": 754,
+          "tp": 87
+        },
+        "f1": 0.6904761904761905,
+        "fnr": 0.3602941176470588,
+        "fpr": 0.037037037037037035,
+        "n": 919,
+        "n_ref_excluded": 33,
+        "n_score_missing": 0,
+        "precision": 0.75,
+        "recall": 0.6397058823529411,
+        "specificity": 0.9629629629629629
+      },
+      "termination": {
+        "counts": {
+          "ambiguous_trigger": 5,
+          "early_trigger": 6,
+          "false_trigger": 7,
+          "missed_success": 1,
+          "true_no_trigger": 6,
+          "true_trigger": 4
+        },
+        "fst_count": 13,
+        "fst_rate": 0.5416666666666666,
+        "fst_rate_ci95": [
+          0.3507486535891948,
+          0.72108666268789
+        ],
+        "fst_share_of_triggers": 0.7647058823529411,
+        "mean_trigger_delay_keyframes": 0.25,
+        "missed_success_rate": 0.09090909090909091,
+        "n_ambiguous_trigger_excluded": 5,
+        "n_episodes": 29
+      },
+      "threshold": {
+        "beta": 0.5,
+        "fallback": false,
+        "n_pos": 117,
+        "n_val": 585,
+        "policy": "val_fbeta",
+        "val_fbeta": 0.726027397260274,
+        "value": 0.45
+      }
+    },
+    "budget": {
+      "k": 0,
+      "n_eligible_pool_episodes": 88,
+      "realized_episode_fraction": 0.0,
+      "realized_keyframe_fraction": 0.0
+    },
+    "condition": "C_vlm_only",
+    "data_kind": "synthetic",
+    "effort": {
+      "correction_rate": null,
+      "human_time_s": 0.0,
+      "human_time_s_capped": 0.0,
+      "mean_s_per_episode": null,
+      "median_s_per_episode": null,
+      "n_corrections": 0,
+      "n_episodes_reviewed": 0,
+      "n_keyframes_reviewed": 0,
+      "n_time_capped": 0,
+      "n_time_missing": 0,
+      "s_per_keyframe": null,
+      "timing_source": "not_applicable"
+    },
+    "fingerprints": {
+      "labels": "3bd589e4555d3b55",
+      "model": "26b7638349cc3ee4",
+      "selected": "4f53cda18c2baa0c",
+      "threshold": "0354c4deb24e94f6"
+    },
+    "fraction": 0.0,
+    "label_counts": {
+      "ambiguous": 54,
+      "failure": 2164,
+      "human_labeled": 0,
+      "invalid": 25,
+      "n_excluded": 108,
+      "n_total": 2847,
+      "n_trainable": 2739,
+      "no_label": 29,
+      "success": 575,
+      "vlm_labeled": 2793
+    },
+    "label_quality_vs_full_review": {
+      "accuracy": 0.9146525679758308,
+      "balanced_accuracy": 0.9019443527797558,
+      "counts": {
+        "fn": 48,
+        "fp": 178,
+        "n": 2648,
+        "tn": 2058,
+        "tp": 364
+      },
+      "f1": 0.7631027253668764,
+      "fnr": 0.11650485436893204,
+      "fpr": 0.07960644007155634,
+      "n": 2648,
+      "n_label_excluded": 79,
+      "n_ref_excluded": 95,
+      "precision": 0.6715867158671587,
+      "recall": 0.883495145631068,
+      "specificity": 0.9203935599284436
+    },
+    "label_quality_vs_synthetic_truth": {
+      "accuracy": 0.9028842643300474,
+      "balanced_accuracy": 0.8988240500315625,
+      "counts": {
+        "fn": 42,
+        "fp": 224,
+        "n": 2739,
+        "tn": 2122,
+        "tp": 351
+      },
+      "f1": 0.7252066115702479,
+      "fnr": 0.10687022900763359,
+      "fpr": 0.09548167092924126,
+      "n": 2739,
+      "n_label_excluded": 83,
+      "n_ref_excluded": 0,
+      "precision": 0.6104347826086957,
+      "recall": 0.8931297709923665,
+      "specificity": 0.9045183290707587
+    },
+    "policy": "none",
+    "replicate": 4,
+    "selected_episodes": [],
+    "threshold": {
+      "fallback": false,
+      "policy": "fixed",
+      "value": 0.5
+    },
+    "vlm_cost": {
+      "latency_source": "simulated",
+      "n_calls": 2822,
+      "n_errors": 29,
+      "n_ok": 2793,
+      "n_unsure": 54,
+      "total_latency_s": 2257.5999999999653
+    }
+  }
+]

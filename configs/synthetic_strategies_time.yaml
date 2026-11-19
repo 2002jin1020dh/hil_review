@@ -1,0 +1,41 @@
+# 후속 실험 (합성 데이터): 같은 "시간" 예산(전체 검토 시간의 25%)에서 검토 정책 비교.
+# 에피소드 수 예산(synthetic_strategies.yaml)과 나란히 비교하려고 둘 다 넣었습니다.
+# 시뮬레이터 수치는 모두 지어낸 값입니다 (synthetic_base.yaml과 동일).
+experiment_name: synthetic_strategies_time
+
+data:
+  kind: synthetic
+  synthetic:
+    n_episodes: 120
+    n_sessions: 6
+    fps: 10.0
+    duration_s: [12.0, 20.0]
+    keyframe_stride: 5
+    mode_probs: {success_attempt: 0.6, near_miss: 0.2, clear_failure: 0.2}
+    seed: 0
+
+vlm:
+  mock: {base_error: 0.05, boundary_error: 0.30, occluded_error: 0.35, hover_fake_success: 0.45,
+         unsure_rate: 0.02, request_error_rate: 0.01}
+
+reviewer:
+  simulated: {miss_vlm_error: 0.10, assisted_base_s: 6.0, assisted_per_keyframe_s: 0.25, per_correction_s: 1.5,
+              blind_base_s: 8.0, blind_per_keyframe_s: 0.6}
+
+splits: {audit_fraction: 0.25, val_fraction_of_pool: 0.2, group_by: episode_id,
+         stratify_by: [session_id, collection_mode], seed: 20261017}
+
+conditions:
+  - {name: A_full_review, policy: full, fraction: 1.0}
+  - {name: E25_random, policy: random, fraction: 0.25}
+  - {name: E25_lowconf, policy: low_confidence, fraction: 0.25}
+  - {name: E25_fakesuccess, policy: fake_success_priority, fraction: 0.25}
+  - {name: T25_random, policy: random, fraction: 0.25, budget_unit: seconds}
+  - {name: T25_lowconf, policy: low_confidence, fraction: 0.25, budget_unit: seconds}
+  - {name: T25_fakesuccess, policy: fake_success_priority, fraction: 0.25, budget_unit: seconds}
+  - {name: C_vlm_only, policy: none, fraction: 0.0}
+
+replicates: {n: 5, base_seed: 1000}
+threshold: {policy: fixed, value: 0.5}
+secondary_threshold: {policy: val_fbeta, beta: 0.5}
+termination: {debounce_k: 1, tolerance: 0}

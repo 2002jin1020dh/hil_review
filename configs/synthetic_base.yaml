@@ -1,0 +1,51 @@
+# Base experiment: 100% / 25% (random) / 0% (VLM-only) review on SYNTHETIC data.
+# Purpose: validate the pipeline end-to-end on CPU. Every parameter of the mock VLM and the simulated
+# reviewer below is an INVENTED PLACEHOLDER, not an estimate of real behaviour.
+experiment_name: synthetic_base
+
+data:
+  kind: synthetic
+  synthetic:
+    n_episodes: 120
+    n_sessions: 6
+    fps: 10.0
+    duration_s: [12.0, 20.0]
+    keyframe_stride: 5          # 10 fps / 5 = 2 Hz keyframes
+    mode_probs: {success_attempt: 0.6, near_miss: 0.2, clear_failure: 0.2}
+    seed: 0
+
+vlm:
+  mock:
+    base_error: 0.05
+    boundary_error: 0.30
+    occluded_error: 0.35
+    hover_fake_success: 0.45
+    unsure_rate: 0.02
+    request_error_rate: 0.01
+
+reviewer:
+  simulated:
+    miss_vlm_error: 0.10
+    assisted_base_s: 6.0
+    assisted_per_keyframe_s: 0.25
+    per_correction_s: 1.5
+    blind_base_s: 8.0
+    blind_per_keyframe_s: 0.6
+
+splits:
+  audit_fraction: 0.25
+  val_fraction_of_pool: 0.2
+  group_by: episode_id
+  stratify_by: [session_id, collection_mode]
+  seed: 20261017
+
+conditions:
+  - {name: A_full_review, policy: full, fraction: 1.0}
+  - {name: B_review25_random, policy: random, fraction: 0.25}
+  - {name: C_vlm_only, policy: none, fraction: 0.0}
+
+replicates: {n: 5, base_seed: 1000}
+
+threshold: {policy: fixed, value: 0.5}            # primary, pre-registered
+secondary_threshold: {policy: val_fbeta, beta: 0.5}  # exploratory, val split only
+termination: {debounce_k: 1, tolerance: 0}

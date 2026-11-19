@@ -1,0 +1,82 @@
+audit_repeat_fraction: 0.3
+bootstrap:
+  n_boot: 1000
+  seed: 4242
+classifier:
+  batch_size: 64
+  epochs: 30
+  l2: 0.001
+  lr: 0.1
+conditions:
+- fraction: 1.0
+  name: A_full_review
+  policy: full
+- fraction: 0.25
+  name: B_review25_random
+  policy: random
+- fraction: 0.25
+  name: B_review25_lowconf
+  policy: low_confidence
+- fraction: 0.25
+  name: B_review25_fakesuccess
+  policy: fake_success_priority
+- fraction: 0.0
+  name: C_vlm_only
+  policy: none
+data:
+  kind: synthetic
+  synthetic:
+    duration_s:
+    - 12.0
+    - 20.0
+    fps: 10.0
+    keyframe_stride: 5
+    mode_probs:
+      clear_failure: 0.2
+      near_miss: 0.2
+      success_attempt: 0.6
+    n_episodes: 120
+    n_sessions: 6
+    seed: 0
+effort:
+  idle_cap_s: 120.0
+experiment_name: synthetic_strategies
+output_root: results
+replicates:
+  base_seed: 1000
+  n: 5
+report_lang: ko
+review_order_seed: 77
+reviewer:
+  simulated:
+    assisted_base_s: 6.0
+    assisted_per_keyframe_s: 0.25
+    blind_base_s: 8.0
+    blind_per_keyframe_s: 0.6
+    miss_vlm_error: 0.1
+    per_correction_s: 1.5
+secondary_threshold:
+  beta: 0.5
+  policy: val_fbeta
+splits:
+  audit_fraction: 0.25
+  group_by: episode_id
+  seed: 20261017
+  stratify_by:
+  - session_id
+  - collection_mode
+  val_fraction_of_pool: 0.2
+termination:
+  debounce_k: 1
+  tolerance: 0
+threshold:
+  policy: fixed
+  value: 0.5
+vlm:
+  mock:
+    base_error: 0.05
+    boundary_error: 0.3
+    hover_fake_success: 0.45
+    occluded_error: 0.35
+    request_error_rate: 0.01
+    unsure_rate: 0.02

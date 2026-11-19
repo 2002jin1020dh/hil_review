@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hilreview"
+version = "0.1.0"
+description = "Research prototype: VLM-assisted labeling and selective human review for HIL-SERL reward classifiers"
+readme = "README.md"
+authors = [{ name = "gawbi" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+# Filmstrip rendering for the human review tool (optional; falls back to printing paths).
+review = ["pillow>=10"]
+# LeRobot integration (only on the GPU laptop; never installed in the cloud sandbox).
+lerobot = ["lerobot[hilserl]>=0.6.1"]
+
+[project.scripts]
+hilreview = "hilreview.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+

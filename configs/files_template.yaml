@@ -1,0 +1,29 @@
+# Template for REAL data (data.kind: files). Paths are examples; nothing here has been run on real data.
+# Real vs synthetic is read from the records themselves; mixing kinds is refused.
+experiment_name: so101_pickplace_base_v1
+
+data:
+  kind: files
+  files:
+    episodes: data/so101/episodes.jsonl            # from `hilreview export-keyframes`
+    keyframes: data/so101/keyframes.jsonl
+    split_file: data/so101/splits.json             # FROZEN with `hilreview split` before any labeling
+    vlm_suggestions: data/so101/vlm_suggestions.jsonl   # `hilreview vlm-label` (local server only)
+    pool_reviews: data/so101/pool_reviews.jsonl    # `hilreview review --purpose pool_review` (assisted, 100%)
+    audit_reviews: data/so101/audit_reviews.jsonl  # `hilreview review --purpose audit` (blind)
+    audit_repeat: data/so101/audit_repeat.jsonl    # optional blind repeat on a subset
+    # classifier_scores: data/so101/classifier_scores.jsonl  # add after `hilreview score` (laptop)
+
+splits: {group_by: episode_id}   # must match how the frozen split was made
+
+conditions:
+  - {name: A_full_review, policy: full, fraction: 1.0}
+  - {name: B_review25_random, policy: random, fraction: 0.25}
+  - {name: C_vlm_only, policy: none, fraction: 0.0}
+
+# Replicates differ only in the random 25% selection and the training seed recorded in the label files.
+replicates: {n: 3, base_seed: 1000}
+threshold: {policy: fixed, value: 0.5}             # primary, pre-registered: must equal the RL success_threshold
+secondary_threshold: {policy: val_fbeta, beta: 0.5}
+termination: {debounce_k: 1, tolerance: 0}         # debounce_k=1 reproduces LeRobot's runtime behaviour
+effort: {idle_cap_s: 120}

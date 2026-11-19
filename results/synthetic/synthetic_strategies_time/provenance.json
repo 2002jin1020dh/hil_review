@@ -1,0 +1,20 @@
+{
+  "base_seed": 1000,
+  "config_hash": "134e102f06837fc3",
+  "config_path": "configs/synthetic_strategies_time.yaml",
+  "created_at_utc": "2026-10-17T18:03:29Z",
+  "data_kind": "synthetic",
+  "environment": {
+    "hilreview_version": "0.1.0",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+    "python": "3.11.16"
+  },
+  "evidence_status": "SYNTHETIC: pipeline validation only, not evidence about real systems",
+  "experiment_name": "synthetic_strategies_time",
+  "git": {
+    "commit": "cb5306bf81042cb6f772261f7c2e0956f9123dda",
+    "dirty": true
+  },
+  "replicates": 5
+}
