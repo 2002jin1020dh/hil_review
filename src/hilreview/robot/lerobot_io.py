@@ -176,23 +176,42 @@ def export_keyframes(  # pragma: no cover - UNVERIFIED
     return out / "episodes.jsonl", out / "keyframes.jsonl"
 
 
-def build_reward_dataset(  # pragma: no cover - UNVERIFIED
+def select_label_rows(rows: Iterable[Mapping], split_map: Mapping[str, str],
+                      splits: Sequence[str] = ("train",)) -> dict[str, list[dict]]:
+    """Keep label rows of episodes in ``splits`` (default train only), grouped by episode.
+
+    val is used for the exploratory threshold choice (D-09) and must not be trained on; audit never.
+    """
+    if "audit" in splits:
+        raise ValueError("audit episodes must never be used to train a classifier (D-08)")
+    by_ep: dict[str, list[dict]] = {}
+    for r in rows:
+        if r["episode_id"] not in split_map:
+            raise ValueError(f"episode {r['episode_id']} is not in the split file")
+        if split_map[r["episode_id"]] in splits:
+            by_ep.setdefault(r["episode_id"], []).append(dict(r))
+    return by_ep
+
+
+def build_reward_dataset(  # pragma: no cover - exercised by scripts/dry_run_offline.py on the laptop
     src_repo_id: str, src_root: str | None, episodes_jsonl: str | Path, labels_jsonl: str | Path,
-    out_repo_id: str, out_root: str | Path, mode: str = "keyframes_only",
+    out_repo_id: str, out_root: str | Path, split_map: Mapping[str, str], mode: str = "keyframes_only",
+    splits: Sequence[str] = ("train",),
 ) -> int:
     """Create a NEW LeRobot dataset whose next.reward comes from one condition's labels. Returns #frames written.
 
-    Frames whose target is None (ambiguous / invalid / no label / non-keyframe in keyframes_only mode) are left
-    out, so the classifier never trains on them. The source dataset is not modified.
+    Only episodes in ``splits`` (default: train) are written. Frames whose target is None (ambiguous / invalid /
+    no label / non-keyframe in keyframes_only mode) are left out, so the classifier never trains on them.
+    The source dataset is not modified.
     """
     _require_lerobot()
     from lerobot.datasets.lerobot_dataset import LeRobotDataset
 
     src = LeRobotDataset(src_repo_id, root=src_root)
     eps = {e.episode_id: e for e in read_jsonl(episodes_jsonl, Episode.from_dict)}
-    by_ep: dict[str, list[dict]] = {}
-    for r in read_jsonl(labels_jsonl):
-        by_ep.setdefault(r["episode_id"], []).append(r)
+    by_ep = select_label_rows(read_jsonl(labels_jsonl), split_map, splits)
+    if not by_ep:
+        raise ValueError(f"no labelled episodes in splits {list(splits)}")
     features = {k: v for k, v in src.meta.features.items() if k not in DEFAULT_FEATURE_KEYS}
     features[REWARD_KEY] = {"dtype": "float32", "shape": (1,), "names": None}
     dst = LeRobotDataset.create(out_repo_id, fps=src.meta.fps, features=features, root=out_root,

@@ -274,3 +274,13 @@ LeRobot `8c920c42` 코드를 다시 읽고, 노트북에서 실제 `ReplayBuffer
 - 도구: `hilreview extract-interventions --wandb-run <offline-run 폴더> --fps <env.fps> --out actor.jsonl [--episodes online_episodes.jsonl --run-id <ID> --episodes-out <새 파일>]`.
 - 확인: 실제 LeRobot learner 기록 함수와 `WandBLogger`로 오프라인 기록을 만들고 다시 읽어, 정해 둔 개입 스텝이 정확히 복원되는 것을 테스트로 확인했습니다(`tests/test_interventions_lerobot.py`). 실제 로봇 실행으로는 P3에서 확인합니다.
 - 한계: 실행을 이어서 재시작(resume)하면 첫 에피소드의 시작 스텝을 `--first-step-offset`으로 알려 줘야 합니다. wandb 0.27.2를 `lerobot` 환경에 설치했습니다(LeRobot 허용 범위 0.24~0.27).
+
+## D-37 보상 분류기는 이미지 정규화 없이(IDENTITY) 학습 + 학습 데이터는 train 분할만 (2026-11-23, 시운전 근거)
+노트북에서 합성 데이터로 오프라인 파이프라인 전체를 실제 LeRobot `8c920c42` + GPU로 시운전했습니다(`scripts/dry_run_offline.py`, 결과는 합성 데이터라 "프로그램 동작" 근거일 뿐입니다).
+- **학습-실행 입력 불일치 확인 (PROJECT_STATUS 문제 1).** `lerobot-train`은 분류기 전처리기로 이미지를 MEAN_STD 정규화하지만, 실행 중 `RewardClassifierProcessorStep`은 정규화 없이 분류기를 부릅니다(코드 확인). 기본 설정(MEAN_STD)으로 학습한 분류기는 같은 키프레임 90개에서 두 입력의 점수 차이가 최대 0.445였고, 판정 2개가 뒤집혔습니다(실행 입력에서만 가짜 성공).
+  - → 분류기 설정을 `normalization_mapping: {"VISUAL": "IDENTITY"}`로 합니다. 이 설정에서는 두 입력의 점수가 완전히 같았습니다(차이 0). LeRobot 코드는 고치지 않습니다.
+- **`hilreview score --input-mode runtime`은 실제 실행 판정과 같습니다.** 실제 `RewardClassifierProcessorStep`에 같은 프레임을 넣은 판정과 60/60 일치했습니다(두 분류기 모두). 그래서 오프라인 가짜 성공 종료 재현(D-10)에 쓰는 점수는 실행 때 판정을 그대로 따릅니다.
+- **`lerobot-train`은 보상 분류기의 `input_features`를 데이터셋에서 채우지 않습니다.** 비워 두면 이미지 없이 학습이 멈춥니다. → `hilreview classifier-config`로 설정 파일을 만들고 `lerobot-train --config_path=<파일>`로 학습합니다. 모든 조건이 같은 생성기와 같은 인자를 씁니다(PROTOCOL 8단계).
+- **`build-reward-dataset`이 val 라벨까지 학습 데이터에 넣던 문제.** 라벨 파일은 풀(train + val)을 담는데, 전부 학습 데이터로 들어갔습니다. val은 보조 분석의 임계값 선택(D-09)에 쓰므로 학습하면 안 됩니다. → `--split-file`을 필수로 받고 기본값으로 train만 씁니다. audit은 어떤 경우에도 거부합니다.
+- 함께 확인: D-29 재라벨이 학습된 분류기 점수로 끝까지 돌았습니다. 시연 6개 모두 판정됐고, 5개는 정확히 "성공 시작 − 1" 전이에서, 1개는 한 전이 일찍(분류기가 거의 들어간 장면을 성공으로 봄) 끝났습니다.
+- 환경: `lerobot` 환경에 LeRobot `training` 옵션(accelerate 등)을 추가로 설치했습니다. torch·numpy·LeRobot 버전은 그대로입니다.

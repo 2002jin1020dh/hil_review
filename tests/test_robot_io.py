@@ -75,3 +75,19 @@ def test_mock_env_rejects_unsafe_actions_and_logs_episodes():
     env.close()
     with pytest.raises(RuntimeError):
         env.step(np.zeros(4))
+
+
+def test_select_label_rows_train_only_and_never_audit():
+    import pytest as _pt
+
+    from hilreview.robot.lerobot_io import select_label_rows
+
+    rows = [{"episode_id": e, "frame_index": 0, "target": 1} for e in ("t1", "v1", "a1", "t1")]
+    split = {"t1": "train", "v1": "val", "a1": "audit"}
+    got = select_label_rows(rows, split)
+    assert list(got) == ["t1"] and len(got["t1"]) == 2
+    assert sorted(select_label_rows(rows, split, ("train", "val"))) == ["t1", "v1"]
+    with _pt.raises(ValueError, match="audit"):
+        select_label_rows(rows, split, ("train", "audit"))
+    with _pt.raises(ValueError, match="not in the split"):
+        select_label_rows([{"episode_id": "x1"}], split)

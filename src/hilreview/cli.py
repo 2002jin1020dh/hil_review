@@ -264,7 +264,8 @@ def cmd_export_keyframes(a) -> int:  # pragma: no cover - laptop only
 def cmd_build_reward_dataset(a) -> int:  # pragma: no cover - laptop only
     from hilreview.robot.lerobot_io import build_reward_dataset
 
-    n = build_reward_dataset(a.src_repo_id, a.src_root, a.episodes, a.labels, a.out_repo_id, a.out_root, a.mode)
+    n = build_reward_dataset(a.src_repo_id, a.src_root, a.episodes, a.labels, a.out_repo_id, a.out_root,
+                             _split_map(a.split_file), a.mode, tuple(a.splits.split(",")))
     print(f"라벨 붙은 프레임 {n}개 저장: {a.out_root}")
     return 0
 
@@ -331,6 +332,21 @@ def cmd_extract_interventions(a) -> int:  # pragma: no cover - needs wandb (test
         print(f"사람 기록에 개입 스텝 채움 -> {a.episodes_out}")
         if rep["human_vs_actor_flag_disagreements"]:
             print(f"주의: 사람이 표시한 개입 여부와 actor 기록이 다른 에피소드 {rep['human_vs_actor_flag_disagreements']}")
+    return 0
+
+
+def cmd_classifier_config(a) -> int:
+    from hilreview.robot.classifier_config import make_classifier_train_config
+
+    cfg = make_classifier_train_config(a.dataset_repo_id, a.dataset_root, a.output_dir, a.job_name,
+                                       cameras=a.cameras.split(",") if a.cameras else None, steps=a.steps,
+                                       batch_size=a.batch_size, seed=a.seed, normalization=a.normalization,
+                                       device=a.device, num_workers=a.num_workers)
+    Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+    Path(a.out).write_text(json.dumps(cfg, indent=2))
+    cams = ", ".join(cfg["reward_model"]["input_features"])
+    print(f"분류기 학습 설정 -> {a.out} (카메라: {cams}, 정규화: {a.normalization})")
+    print(f"실행: lerobot-train --config_path={a.out}")
     return 0
 
 
@@ -439,7 +455,7 @@ def build_parser() -> argparse.ArgumentParser:
     ek.add_argument("--cameras", default=None)
     ek.set_defaults(fn=cmd_export_keyframes)
 
-    b = sub.add_parser("build-reward-dataset", help="[laptop, UNVERIFIED] condition labels -> new LeRobot dataset")
+    b = sub.add_parser("build-reward-dataset", help="[laptop] condition labels (train 에피소드만) -> new LeRobot dataset")
     b.add_argument("--src-repo-id", required=True)
     b.add_argument("--src-root", default=None)
     b.add_argument("--episodes", required=True)
@@ -447,6 +463,8 @@ def build_parser() -> argparse.ArgumentParser:
     b.add_argument("--out-repo-id", required=True)
     b.add_argument("--out-root", required=True)
     b.add_argument("--mode", default="keyframes_only", choices=["keyframes_only", "hold_previous", "nearest"])
+    b.add_argument("--split-file", required=True, help="고정된 데이터 나누기 파일 (split 출력)")
+    b.add_argument("--splits", default="train", help="분류기 학습에 쓸 분할 (기본 train만; val은 임계값 선택용, audit 금지)")
     b.set_defaults(fn=cmd_build_reward_dataset)
 
     sk = sub.add_parser("score", help="[laptop, UNVERIFIED] score val/audit keyframes with a trained classifier")
@@ -504,6 +522,22 @@ def build_parser() -> argparse.ArgumentParser:
     xi.add_argument("--run-id", default=None)
     xi.add_argument("--episodes-out", default=None, help="채운 기록을 쓸 새 파일 (원본은 그대로)")
     xi.set_defaults(fn=cmd_extract_interventions)
+
+    cc = sub.add_parser("classifier-config", help="lerobot-train 보상 분류기 설정 JSON (모든 조건 동일, D-37)")
+    cc.add_argument("--dataset-repo-id", required=True)
+    cc.add_argument("--dataset-root", required=True, help="build-reward-dataset 출력 폴더")
+    cc.add_argument("--output-dir", required=True, help="lerobot-train 출력 폴더 (아직 없어야 함)")
+    cc.add_argument("--job-name", required=True)
+    cc.add_argument("--out", required=True, help="쓸 설정 파일 (.json)")
+    cc.add_argument("--cameras", default=None, help="쉼표로 구분 (기본: 데이터셋의 모든 이미지)")
+    cc.add_argument("--steps", type=int, default=5000)
+    cc.add_argument("--batch-size", type=int, default=32)
+    cc.add_argument("--seed", type=int, default=1000)
+    cc.add_argument("--normalization", default="IDENTITY", choices=["IDENTITY", "MEAN_STD"],
+                    help="IDENTITY = 실행 때와 같은 입력 (D-37 기본값)")
+    cc.add_argument("--device", default="cuda")
+    cc.add_argument("--num-workers", type=int, default=4)
+    cc.set_defaults(fn=cmd_classifier_config)
     return p
 
 

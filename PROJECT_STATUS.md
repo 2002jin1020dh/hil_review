@@ -58,8 +58,8 @@ python scripts/sample_size.py                            # 계획용 추정치 �
 - 라벨이 좋아진 만큼 대체 분류기의 평가 성능까지 좋아지지는 **않았습니다**. audit 에피소드 29개로는 A와의 차이가 대부분 신뢰구간 안에서 0을 포함했고, FNR 차이만 구분됐습니다. 그래서 실제 로봇 평가가 꼭 필요합니다.
 
 ## 해결해야 할 문제 (중요한 순서)
-1. **학습 때와 실행 때 입력이 다를 수 있음** (LeRobot 0.6.1 코드를 읽어서 찾은 것, 미확인): 학습(`lerobot-train`)에서는 이미지를 정규화하는데, HIL-SERL 실행 중의 `RewardClassifierProcessorStep`은 정규화 없이 분류기를 호출하는 것으로 보입니다. 사실이라면 실행 중 점수와 가짜 성공 종료 비율이 달라집니다. 확인 방법: `hilreview score --input-mode runtime`과 `--input-mode train` 비교 (`docs/LAPTOP_CHECKS.md` 5단계).
-2. LeRobot 연결 코드(`export-keyframes`, `build-reward-dataset`, `score`)는 **한 번도 실행된 적이 없습니다**.
+1. ~~**학습 때와 실행 때 입력이 다를 수 있음**~~ → **확인·해결 (2026-11-23, D-37):** 시운전에서 불일치를 확인했고, 분류기를 `VISUAL=IDENTITY`로 학습해 해결. 원래 내용: (LeRobot 0.6.1 코드를 읽어서 찾은 것, 미확인): 학습(`lerobot-train`)에서는 이미지를 정규화하는데, HIL-SERL 실행 중의 `RewardClassifierProcessorStep`은 정규화 없이 분류기를 호출하는 것으로 보입니다. 사실이라면 실행 중 점수와 가짜 성공 종료 비율이 달라집니다. 확인 방법: `hilreview score --input-mode runtime`과 `--input-mode train` 비교 (`docs/LAPTOP_CHECKS.md` 5단계).
+2. ~~LeRobot 연결 코드(`export-keyframes`, `build-reward-dataset`, `score`)는 **한 번도 실행된 적이 없습니다**.~~ → 합성 데이터 시운전에서 모두 실행 (2026-11-23, `scripts/dry_run_offline.py`). 실제 녹화 데이터로는 아직 실행 전.
 3. ~~`lerobot` 환경의 `sm_120` 지원~~ → **확인됨** (torch 2.11.0+cu130). LeRobot은 0.6.2, 커밋 **`8c920c42`**(직접 수정 없음)로 고정합니다(D-33).
 4. **RAM 부족**: 14GiB 중 여유가 3.3GiB였습니다. VLM과 학습을 동시에 돌리기는 어렵고, 순서를 정해 돌려야 합니다. 그때 `crrl` 실험은 RAM을 약 1.8GiB만 썼으므로, 나머지는 다른 프로그램이 쓰고 있었을 가능성이 큽니다(추정).
 5. 통계: 시드 3개면 B/C가 실제로 A와 같아도 "비열등" 결론이 나올 확률이 약 26~35%입니다(Welch 규칙, 가정값으로 추정, `RESOURCE_ESTIMATES.md` 1-1절). 결론의 무게는 사람 시간과 오프라인 지표에 둡니다(D-31).
