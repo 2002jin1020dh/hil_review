@@ -104,7 +104,7 @@
 - **블라인드와 순서**: `hilreview schedule --conditions A,B,C --replicates R --seed <S>`로 순서표를 만듭니다. 작업자는 실행 ID만 봅니다. 조건이 적힌 key 파일은 모든 실행과 성공 판단이 끝날 때까지 열지 않습니다.
 - **개입**: LeRobot 안내에 따라 같은 사람이 게임패드로 개입하고(D-28), 그 사람도 조건을 모릅니다.
 - **평가 에피소드**: 각 실행 후, 정해 둔 물체 시작 위치 **10곳 × 2회 = 20개**를 무작위 순서로 돌립니다. 개입은 하지 않습니다. 성공 판단은 사람이 `LABEL_DEFINITION.md` 기준으로 합니다. 보상 분류기는 성공을 **절대** 판단하지 않습니다.
-- **기록**: `hilreview log-episodes`로 에피소드가 끝날 때마다 글자 2개를 입력합니다(D-26). 에피소드마다 `OnlineEpisodeRecord` 하나(run_id, 단계, 종료 이유, 사람 판단, actor 기록의 개입 스텝/전체 스텝/fps), 실행마다 `RunRecord` 하나(상태, 소요 시간)를 남깁니다.
+- **기록**: `hilreview log-episodes`로 에피소드가 끝날 때마다 글자 2개를 입력합니다(D-26). 에피소드마다 `OnlineEpisodeRecord` 하나(run_id, 단계, 종료 이유, 사람 판단, actor 기록의 개입 스텝/전체 스텝/fps), 실행마다 `RunRecord` 하나(상태, 소요 시간)를 남깁니다. 개입/전체 스텝은 실행이 끝난 뒤 `hilreview extract-interventions`로 learner의 오프라인 wandb 기록에서 채웁니다(D-36, HIL-SERL 설정에 `wandb.enable=true`, `wandb.mode=offline` 필수).
 - **안전**: 모든 실행은 사용자가 시작하고 멈춥니다. 비상 정지 버튼에 손이 닿아야 하고, 끝단(EE) 이동 범위가 설정되어 있어야 합니다(`lerobot-find-joint-limits`). 이 저장소의 어떤 코드도 로봇을 움직이지 않습니다.
 
 ## 7. 통계 분석 계획

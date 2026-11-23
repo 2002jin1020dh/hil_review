@@ -165,7 +165,7 @@ Python 3.12에서 내장 `sum()`의 실수 합계 방식이 바뀌었기 때문�
 - 실행 ID만 보여 줘서 블라인드를 유지합니다. 로봇이나 LeRobot과는 통신하지 않습니다.
 - 매번 원자적으로 저장하고, 마지막 기록 취소와 이어서 기록하기를 지원합니다.
 - 실행 상태(정상/중단/오류)는 train 단계에서만 기록합니다.
-- 개입 스텝 수는 LeRobot actor 기록에서 따로 가져와야 합니다(아직 미구현).
+- 개입 스텝 수는 LeRobot actor 기록에서 따로 가져옵니다 → D-36 (`hilreview extract-interventions`).
 
 ## D-27 VLM 서버: vLLM + Qwen3-VL-4B-Instruct-FP8부터 (별도 환경)
 - 12GB GPU와 빠듯한 RAM 때문에 4B FP8(파일 6.02GB)부터 시작합니다. 8B FP8(10.59GB)은 너무 큽니다.
@@ -265,3 +265,12 @@ LeRobot `8c920c42` 코드를 다시 읽고, 노트북에서 실제 `ReplayBuffer
 - `--threshold`, `--success-reward`는 온라인 HIL-SERL 설정(`success_threshold`, `success_reward`)과 **같은 값**이어야 합니다.
 - 함께 고친 버그: LeRobot 데이터셋에서 읽은 길이 1 특성이 shape `()`로 나와 `add_frame` 검증에 걸렸습니다. `build-reward-dataset`(지금까지 실행해 본 적 없음)에도 같은 버그가 있어 함께 고쳤습니다(`_as_feature_array`).
 - 아직 실행 안 한 것: `score-frames`는 학습된 분류기가 있어야 실행해 볼 수 있습니다. 첫 분류기를 학습한 뒤 2개 에피소드로 확인합니다.
+
+## D-36 개입 스텝은 learner의 오프라인 wandb 기록에서 가져옴 (D-26 미구현 부분, 2026-11-23)
+- LeRobot `8c920c42`에서 에피소드별 개입 스텝을 세는 곳은 actor뿐입니다(`rl/actor.py`: 개입 스텝, 전체 스텝). actor는 에피소드가 끝날 때 {"Interaction step"(마지막 스텝 번호), "Intervention rate"(개입 스텝 ÷ 전체 스텝), "Episode intervention"}을 learner로 보내고, learner는 이것을 **wandb에만** 기록합니다(`process_interaction_message`). 일반 로그 파일에는 남지 않습니다.
+- 그래서 HIL-SERL 설정에서 **wandb를 오프라인 모드로 켭니다**: `wandb.enable=true`, `wandb.mode=offline`, `wandb.disable_artifact=true`. 아무것도 업로드되지 않고 `<output_dir>/wandb/offline-run-*`에만 저장됩니다. LeRobot 코드는 고치지 않습니다.
+- 복원: 전체 스텝 = 이번 에피소드 마지막 스텝 번호 − 이전 에피소드 마지막 스텝 번호, 개입 스텝 = 비율 × 전체 스텝. 정수가 아니거나 개입 여부와 어긋나면(기록 누락) 추측하지 않고 오류를 냅니다.
+- 사람 기록(`log-episodes`)의 train 에피소드와 **순서로** 짝짓고, 개수가 다르면 채우지 않습니다. 사람이 표시한 개입 여부(`i`)와 actor 기록이 다른 에피소드는 보고합니다.
+- 도구: `hilreview extract-interventions --wandb-run <offline-run 폴더> --fps <env.fps> --out actor.jsonl [--episodes online_episodes.jsonl --run-id <ID> --episodes-out <새 파일>]`.
+- 확인: 실제 LeRobot learner 기록 함수와 `WandBLogger`로 오프라인 기록을 만들고 다시 읽어, 정해 둔 개입 스텝이 정확히 복원되는 것을 테스트로 확인했습니다(`tests/test_interventions_lerobot.py`). 실제 로봇 실행으로는 P3에서 확인합니다.
+- 한계: 실행을 이어서 재시작(resume)하면 첫 에피소드의 시작 스텝을 `--first-step-offset`으로 알려 줘야 합니다. wandb 0.27.2를 `lerobot` 환경에 설치했습니다(LeRobot 허용 범위 0.24~0.27).

@@ -313,6 +313,27 @@ def cmd_relabel_demos(a) -> int:  # pragma: no cover - laptop only (tested via t
     return 0
 
 
+def cmd_extract_interventions(a) -> int:  # pragma: no cover - needs wandb (tested in tests/test_interventions_lerobot.py)
+    from hilreview.evaluation.interventions import attach_to_records, episodes_from_history, read_wandb_history
+    from hilreview.evaluation.online import OnlineEpisodeRecord
+
+    eps = episodes_from_history(read_wandb_history(a.wandb_run), a.first_step_offset)
+    write_jsonl(a.out, [e.to_dict() for e in eps])
+    steps = sum(e.intervention_steps for e in eps)
+    print(f"actor 에피소드 {len(eps)}개, 개입 에피소드 {sum(e.intervention_flag for e in eps)}개, "
+          f"개입 스텝 {steps}개 = {steps / a.fps:.1f}초 (fps {a.fps}) -> {a.out}")
+    if a.episodes:
+        if not (a.run_id and a.episodes_out):
+            raise SystemExit("--episodes를 주면 --run-id와 --episodes-out도 필요합니다")
+        recs = read_jsonl(a.episodes, OnlineEpisodeRecord.from_dict)
+        out, rep = attach_to_records(recs, eps, a.run_id, a.fps)
+        write_jsonl(a.episodes_out, out)
+        print(f"사람 기록에 개입 스텝 채움 -> {a.episodes_out}")
+        if rep["human_vs_actor_flag_disagreements"]:
+            print(f"주의: 사람이 표시한 개입 여부와 actor 기록이 다른 에피소드 {rep['human_vs_actor_flag_disagreements']}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="hilreview", description=__doc__)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -472,6 +493,17 @@ def build_parser() -> argparse.ArgumentParser:
     rd.add_argument("--image-storage", default="image", choices=["image", "video"],
                     help="image = 무손실 저장 (영상 재압축 없음, 기본값)")
     rd.set_defaults(fn=cmd_relabel_demos)
+
+    xi = sub.add_parser("extract-interventions",
+                        help="[laptop] D-26/D-36: learner의 오프라인 wandb 기록 -> 에피소드별 개입 스텝·전체 스텝")
+    xi.add_argument("--wandb-run", required=True, help="<output_dir>/wandb/offline-run-* 폴더 또는 run-*.wandb 파일")
+    xi.add_argument("--fps", type=float, required=True, help="HIL-SERL env.fps (개입 시간 = 스텝 / fps)")
+    xi.add_argument("--out", required=True, help="actor 에피소드 JSONL")
+    xi.add_argument("--first-step-offset", type=int, default=0, help="이 실행의 첫 에피소드 시작 스텝 (새 실행이면 0)")
+    xi.add_argument("--episodes", default=None, help="(선택) log-episodes 기록: 이 실행의 train 에피소드에 채워 넣음")
+    xi.add_argument("--run-id", default=None)
+    xi.add_argument("--episodes-out", default=None, help="채운 기록을 쓸 새 파일 (원본은 그대로)")
+    xi.set_defaults(fn=cmd_extract_interventions)
     return p
 
 

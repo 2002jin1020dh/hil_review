@@ -70,7 +70,7 @@ python scripts/sample_size.py                            # 계획용 추정치 �
 10. **도구** (실제 데이터를 보기 전에 만들고 테스트, 2026-11-23 모두 구현):
     - ~~시연 데이터 보상을 조건별 분류기로 다시 매기는 도구 (D-29)~~ → 구현 (2026-11-23, D-35: 규칙 수정 2가지, 실제 `ReplayBuffer`로 확인)
     - ~~온라인 "X − A" Welch t 구간 계산 (D-30)~~ → 구현 (`online-summary --reference`)
-11. 개입 스텝을 LeRobot actor 기록에서 가져오는 도구도 아직 없습니다(D-26).
+11. ~~개입 스텝을 LeRobot actor 기록에서 가져오는 도구도 아직 없습니다(D-26).~~ → 구현 (D-36: learner의 오프라인 wandb 기록에서 추출, `extract-interventions`)
 
 ## 막혀 있는 것 (사용자 컴퓨터나 결정이 필요)
 - GPU 노트북, 로봇, 카메라, VLM 모델, LeRobot 실행, 실제 데이터가 필요한 모든 작업
