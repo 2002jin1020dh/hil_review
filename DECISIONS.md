@@ -250,3 +250,18 @@ Python 3.12에서 내장 `sum()`의 실수 합계 방식이 바뀌었기 때문�
 - GitHub 설정에서 이메일이 "Private"로 되어 있습니다. 그래서 "Block command line pushes that expose my email"이 켜져 있으면 push가 거절될 수 있습니다(GH007). 해결법은 `PROJECT_STATUS.md`에 있습니다.
 - 나중에 만들 **공개 저장소**의 커밋에는 실제 메일 대신 GitHub noreply 주소를 씁니다.
 - 실제로는 AI 어시스턴트가 만든 커밋입니다. 논문을 내거나 공개할 때는 AI 도움을 밝히는 것을 추천합니다(`PROJECT_STATUS.md` 공개 전 체크리스트 6번).
+
+## D-35 D-29 재라벨 규칙 수정 2가지 + 도구 구현 (2026-11-23, 사용자 승인)
+LeRobot `8c920c42` 코드를 다시 읽고, 노트북에서 실제 `ReplayBuffer`로 확인했습니다(`tests/test_demo_relabel_lerobot.py`).
+- **수정 1: 한 프레임 밀기.** 녹화(`gym_manipulator` record 모드)는 프레임 t에 [행동 **전** 관측 s_t, 행동 a_t, 그 결과의 reward/done]을 저장합니다. 온라인에서는 `RewardClassifierProcessorStep`이 행동 **뒤** 관측 s_{t+1}을 채점합니다.
+  - → 프레임 t의 보상·종료는 **프레임 t+1 이미지 점수**로 정합니다. 프레임 0(리셋 직후) 점수는 쓰지 않습니다.
+  - → 마지막 프레임 다음 관측은 저장되지 않으므로, 마지막 전이에서는 판정하지 않습니다.
+  - D-29 원래 문구("처음으로 `p > 0.5`인 프레임에서 reward = 1")대로 하면 종료가 한 스텝 늦어집니다.
+- **수정 2: 판정이 없으면 done을 쓰지 않음.** 오프라인 버퍼는 truncation을 지원하지 않습니다(`buffer.py`: `truncated = done`, "Truncation are not supported yet"). SAC는 `done`만 보고 가치 추정을 끊습니다(`td_target = r + (1 - done)·γ·Q`).
+  - D-29 원래 문구("마지막 프레임에서 끝남, truncated")를 `done=True`로 구현하면 "진짜 끝, 이후 가치 0"이 되어, 온라인의 시간 초과(가치 계속 추정)와 의미가 달라집니다.
+  - → 판정이 없는 에피소드는 모든 프레임 `done=False`. 버퍼는 이때 마지막 프레임의 next_state를 자기 자신으로 둡니다(테스트로 확인). 시간 초과와 가장 가까운 처리입니다.
+- 나머지 D-29 규칙은 그대로입니다: 대상은 train 분할의 `success_attempt` 에피소드 전부(모든 조건 공통), 엄격한 `>` 비교, 판정 뒤 프레임은 버림, 녹화 때 사람 성공 버튼 값은 학습에 쓰지 않음(기록 파일에 비교용으로만 남김).
+- 도구: `hilreview score-frames`(모든 프레임 채점, 기본 `--input-mode runtime`) → `hilreview relabel-demos`(원본은 그대로 두고 새 데이터셋 + 에피소드별 기록 파일). 이미지는 기본적으로 무손실(`image`)로 저장해 영상 재압축을 피합니다.
+- `--threshold`, `--success-reward`는 온라인 HIL-SERL 설정(`success_threshold`, `success_reward`)과 **같은 값**이어야 합니다.
+- 함께 고친 버그: LeRobot 데이터셋에서 읽은 길이 1 특성이 shape `()`로 나와 `add_frame` 검증에 걸렸습니다. `build-reward-dataset`(지금까지 실행해 본 적 없음)에도 같은 버그가 있어 함께 고쳤습니다(`_as_feature_array`).
+- 아직 실행 안 한 것: `score-frames`는 학습된 분류기가 있어야 실행해 볼 수 있습니다. 첫 분류기를 학습한 뒤 2개 에피소드로 확인합니다.

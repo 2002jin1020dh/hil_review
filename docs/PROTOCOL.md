@@ -69,7 +69,7 @@
 7. `hilreview run --config <파일 설정> --export-labels`를 실행합니다. 조건·반복 실행별 라벨 파일과 사람 시간·라벨 품질 결과가 나옵니다. 프로토콜을 어긴 검토 파일은 거부합니다(예: audit 에피소드를 VLM 제안을 보면서 검토한 경우).
 8. 조건과 학습 시드마다 `hilreview build-reward-dataset` → `lerobot-train`(보상 분류기)을 실행합니다. 분류기 설정, 스텝 수, 시드는 **모든 조건에서 같게** 합니다.
 9. val과 audit 키프레임에 `hilreview score`를 실행하고, `classifier_scores`를 넣어 7번을 다시 실행합니다. 그러면 audit 지표, termination replay, 짝지은 비교가 나옵니다.
-   - 9-1. 조건마다 시연 데이터(train의 `success_attempt` 에피소드 전부)의 보상을 그 조건의 분류기로 다시 매깁니다(D-29, 도구는 아직 없음).
+   - 9-1. 조건마다 시연 데이터(train의 `success_attempt` 에피소드 전부)의 보상을 그 조건의 분류기로 다시 매깁니다(D-29, 규칙 수정 D-35): `hilreview score-frames` → `hilreview relabel-demos`. `--threshold`/`--success-reward`는 온라인 설정과 같은 값.
 10. 블라인드 순서표대로 온라인 HIL-SERL을 실행합니다(6절). 이때 다른 무거운 작업은 돌리지 않습니다(D-33).
 11. 블라인드를 풀고 요약합니다: `hilreview online-summary`.
 

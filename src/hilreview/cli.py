@@ -271,6 +271,39 @@ def cmd_score(a) -> int:  # pragma: no cover - laptop only
     return 0
 
 
+def _demo_ids(a) -> list[str]:
+    from hilreview.robot.demo_relabel import select_demo_episodes
+
+    ids = select_demo_episodes(read_jsonl(a.episodes, Episode.from_dict), _split_map(a.split_file))
+    if not ids:
+        raise SystemExit("시연 에피소드가 없습니다 (train 분할의 success_attempt 에피소드가 0개)")
+    return ids
+
+
+def cmd_score_frames(a) -> int:  # pragma: no cover - laptop only
+    from hilreview.robot.demo_relabel import score_demo_frames
+
+    ids = _demo_ids(a)
+    n = score_demo_frames(a.classifier, a.repo_id, a.root, a.episodes, ids, a.out, a.condition, a.replicate,
+                          a.input_mode, a.device, a.batch_size)
+    print(f"[{a.condition} rep{a.replicate}] 시연 에피소드 {len(ids)}개, 프레임 {n}개 점수 계산 -> {a.out}")
+    return 0
+
+
+def cmd_relabel_demos(a) -> int:  # pragma: no cover - laptop only (tested via tests/test_demo_relabel_lerobot.py)
+    from hilreview.robot.demo_relabel import write_relabeled_demo_dataset
+
+    ids = _demo_ids(a)
+    rows = write_relabeled_demo_dataset(a.src_repo_id, a.src_root, a.episodes, ids, a.scores, a.out_repo_id,
+                                        a.out_root, a.manifest, a.threshold, a.success_reward, a.image_storage)
+    trig = sum(r["trigger_frame"] is not None for r in rows)
+    kept = sum(r["n_keep"] for r in rows)
+    print(f"시연 에피소드 {len(rows)}개 재라벨: 분류기 성공 판정 {trig}개, 판정 없음 {len(rows) - trig}개, "
+          f"남긴 프레임 {kept}개 -> {a.out_root}")
+    print(f"기록 파일: {a.manifest}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="hilreview", description=__doc__)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -396,6 +429,36 @@ def build_parser() -> argparse.ArgumentParser:
     sk.add_argument("--input-mode", default="runtime", choices=["runtime", "train"])
     sk.add_argument("--device", default="cuda")
     sk.set_defaults(fn=cmd_score)
+
+    sf = sub.add_parser("score-frames", help="[laptop] D-29: 시연 에피소드의 모든 프레임을 조건의 분류기로 채점")
+    sf.add_argument("--classifier", required=True)
+    sf.add_argument("--repo-id", required=True)
+    sf.add_argument("--root", default=None)
+    sf.add_argument("--episodes", required=True)
+    sf.add_argument("--split-file", required=True)
+    sf.add_argument("--out", required=True)
+    sf.add_argument("--condition", required=True)
+    sf.add_argument("--replicate", type=int, required=True)
+    sf.add_argument("--input-mode", default="runtime", choices=["runtime", "train"],
+                    help="runtime = 온라인 실행과 같은 입력 (D-29 기본값)")
+    sf.add_argument("--device", default="cuda")
+    sf.add_argument("--batch-size", type=int, default=64)
+    sf.set_defaults(fn=cmd_score_frames)
+
+    rd = sub.add_parser("relabel-demos", help="[laptop] D-29/D-35: 시연 데이터 보상을 조건의 분류기 점수로 다시 매긴 새 데이터셋")
+    rd.add_argument("--src-repo-id", required=True)
+    rd.add_argument("--src-root", default=None)
+    rd.add_argument("--episodes", required=True)
+    rd.add_argument("--split-file", required=True)
+    rd.add_argument("--scores", required=True, help="score-frames 출력 (한 조건·한 반복)")
+    rd.add_argument("--out-repo-id", required=True)
+    rd.add_argument("--out-root", required=True)
+    rd.add_argument("--manifest", required=True, help="에피소드별 판정 위치·사람 버튼 위치 기록 (JSON)")
+    rd.add_argument("--threshold", type=float, default=0.5, help="온라인 success_threshold와 같아야 함")
+    rd.add_argument("--success-reward", type=float, default=1.0, help="온라인 success_reward와 같아야 함")
+    rd.add_argument("--image-storage", default="image", choices=["image", "video"],
+                    help="image = 무손실 저장 (영상 재압축 없음, 기본값)")
+    rd.set_defaults(fn=cmd_relabel_demos)
     return p
 
 

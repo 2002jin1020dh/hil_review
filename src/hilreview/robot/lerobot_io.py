@@ -128,6 +128,16 @@ def _to_uint8_hwc(img):  # pragma: no cover - needs torch
     return arr
 
 
+def _as_feature_array(value, spec):
+    """Dataset items come back with shape () for (1,)-features; add_frame validates the declared shape."""
+    import numpy as np
+
+    arr = value.detach().cpu().numpy() if hasattr(value, "detach") else np.asarray(value)
+    dtype = {"float32": np.float32, "float64": np.float64, "int64": np.int64, "int32": np.int32,
+             "bool": bool}.get(spec.get("dtype"), arr.dtype)
+    return arr.astype(dtype).reshape(tuple(spec["shape"]))
+
+
 def export_keyframes(  # pragma: no cover - UNVERIFIED
     repo_id: str, root: str | None, out_dir: str | Path, stride: int, session_of: Mapping[int, str],
     mode_of: Mapping[int, str], camera_keys: Sequence[str] | None = None,
@@ -209,8 +219,7 @@ def build_reward_dataset(  # pragma: no cover - UNVERIFIED
                 elif spec.get("dtype") in ("image", "video"):
                     frame[k] = _to_uint8_hwc(item[k])
                 elif k in item:
-                    v = item[k]
-                    frame[k] = v.numpy() if hasattr(v, "numpy") else v
+                    frame[k] = _as_feature_array(item[k], spec)
             frame["task"] = item.get("task", "")
             dst.add_frame(frame)
             n_ep += 1
