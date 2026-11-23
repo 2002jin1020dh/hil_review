@@ -54,7 +54,7 @@
 | 장치 고정 이름 | `configs/udev/99-hil-review.rules`: `/dev/so101_leader`(시리얼 5AE6086427), `/dev/so101_follower`(5AE6083026), `/dev/cam_front`(C270, 046d:0825), `/dev/cam_wrist`(0bda:5844). USB 포트 교차·재부팅 후에도 유지 확인. 카메라 두 대는 시리얼이 같아(200901010001) 제조사·모델 ID로 구분 |
 | 게임패드 | F310 D 모드("Logitech Dual Action"), `scripts/check_gamepad.py` 15/15 통과 (버튼 6개, 스틱 8방향 부호·끝까지, 중립 ±0.004) |
 | 로봇 팔 | `scripts/check_arms.py` 6/6 통과. 리더 5.2V, 팔로워 12.4V, 오류 비트 없음. 캘리브레이션 id `hil_leader`, `hil_follower` |
-| 카메라 | front(천장, 포토박스)·wrist 640×480 약 24fps. wrist는 그리퍼 끝이 보이지 않지만 집기 직전·잡은 상태의 물체가 보임. 두 카메라 모두 자동 노출·자동 화이트밸런스 켜짐(물체·조명 확정 후 고정 예정) |
+| 카메라 | front(천장, 포토박스)·wrist 640×480 약 24fps. wrist는 그리퍼 끝이 보이지 않지만 집기 직전·잡은 상태의 물체가 보임. 노출·화이트밸런스 고정 도구 준비됨(D-39): front는 수동 고정 가능, wrist는 노출 고정 불가(자동 노출 유지, 화이트밸런스만 고정). wrist 전원 주파수 50Hz→60Hz로 바로잡음 |
 | URDF | `~/SO-ARM100/Simulation/SO101/so101_new_calib.urdf` (TheRobotStudio/SO-ARM100 `141aea7`). 끝단 이름은 `gripper_frame_link` (기본값 `gripper`는 그리퍼 관절 위치라 약 10cm 다름) |
 
 ## 3. 사용자 하드웨어에 대한 미확인 가정 (일부는 3a절에서 확인됨)
