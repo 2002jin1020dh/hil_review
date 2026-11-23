@@ -186,3 +186,43 @@ def summarize_conditions(
             "runs": runs_c,
         }
     return out
+
+
+def compare_to_reference(per_cond: Mapping[str, Mapping[str, Any]], reference: str, delta: float = 0.20,
+                         conf: float = 0.95) -> dict:
+    """D-30: "X - A" Welch decision for every condition X != reference, from ``summarize_conditions`` output.
+
+    primary:     completed runs with a judged eval success rate
+    sensitivity: primary + aborted/crashed runs counted as success rate 0 (D-30)
+    pooled_wilson_descriptive: episodes pooled across seeds (ignores seed clustering; description only)
+    """
+    from hilreview.evaluation.noninferiority import noninferiority
+
+    if reference not in per_cond:
+        raise ValueError(f"reference condition {reference!r} not in results: {sorted(per_cond)}")
+
+    def arms(cond: str) -> tuple[list[float], list[float], int]:
+        runs = per_cond[cond]["runs"]
+        done = [r["summary"]["eval_success"]["rate"] for r in runs if r["status"] == "completed"]
+        primary = [v for v in done if v is not None]
+        failed = sum(1 for r in runs if r["status"] in ("aborted", "crashed"))
+        return primary, primary + [0.0] * failed, len(done) - len(primary)
+
+    a_primary, a_sens, a_unjudged = arms(reference)
+    out = {}
+    for cond in sorted(per_cond):
+        if cond == reference:
+            continue
+        x_primary, x_sens, x_unjudged = arms(cond)
+        px, pa = per_cond[cond]["eval_success_pooled"], per_cond[reference]["eval_success_pooled"]
+        out[cond] = {
+            "reference": reference,
+            "primary": noninferiority(x_primary, a_primary, delta, conf),
+            "sensitivity_failed_runs_as_zero": noninferiority(x_sens, a_sens, delta, conf),
+            "completed_runs_without_judged_eval": {"x": x_unjudged, "reference": a_unjudged},
+            "failed_runs": {"x": per_cond[cond]["n_runs_failed"], "reference": per_cond[reference]["n_runs_failed"]},
+            "pooled_wilson_descriptive": {"x": px, "reference": pa,
+                                          "diff": (px["rate"] - pa["rate"]) if px["rate"] is not None
+                                          and pa["rate"] is not None else None},
+        }
+    return out

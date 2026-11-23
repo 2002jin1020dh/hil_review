@@ -161,12 +161,21 @@ def cmd_schedule(a) -> int:
 
 
 def cmd_online_summary(a) -> int:
-    from hilreview.evaluation.online import OnlineEpisodeRecord, RunRecord, summarize_conditions
+    from hilreview.evaluation.online import (OnlineEpisodeRecord, RunRecord, compare_to_reference,
+                                             summarize_conditions)
 
     eps = read_jsonl(a.episodes, OnlineEpisodeRecord.from_dict)
     runs = read_jsonl(a.runs, RunRecord.from_dict)
     key = {k["run_id"]: k for k in json.loads(Path(a.key).read_text())}
     out = summarize_conditions(eps, runs, key)
+    if a.reference:
+        comp = compare_to_reference(out, a.reference, a.delta, a.conf)
+        out = {"conditions": out, "comparisons_D30": comp}
+        ko = {"noninferior": "비열등", "inferior": "열등", "inconclusive": "판단 불가", "insufficient_runs": "실행 부족"}
+        for cond, c in comp.items():
+            p, s = c["primary"], c["sensitivity_failed_runs_as_zero"]
+            bound = "" if p["lower"] is None else f" (차이 {p['diff']:+.3f}, 단측 {p['conf']:.0%} 구간 [{p['lower']:+.3f}, {p['upper']:+.3f}], -δ={-p['delta']:+.2f})"
+            print(f"{cond} − {a.reference}: {ko[p['decision']]}{bound} | 실패 실행 0 처리 시: {ko[s['decision']]}")
     Path(a.out).write_text(json.dumps(out, indent=2, sort_keys=True, default=str))
     print(f"실제 로봇 결과 요약 -> {a.out}")
     return 0
@@ -372,6 +381,10 @@ def build_parser() -> argparse.ArgumentParser:
     o.add_argument("--runs", required=True)
     o.add_argument("--key", required=True)
     o.add_argument("--out", required=True)
+    o.add_argument("--reference", default=None,
+                   help="D-30 기준 조건 이름 (예: A_full_review). 주면 X − A Welch 비열등 판단을 함께 계산")
+    o.add_argument("--delta", type=float, default=0.20, help="비열등 한계 δ (D-30 사전 등록값 0.20)")
+    o.add_argument("--conf", type=float, default=0.95, help="단측 신뢰수준 (D-30 사전 등록값 0.95)")
     o.set_defaults(fn=cmd_online_summary)
 
     vc = sub.add_parser("vlm-check", help="[노트북] 로컬 VLM 서버 점검: 연결, 응답 해석, 확신 점수(logprobs), 속도")
