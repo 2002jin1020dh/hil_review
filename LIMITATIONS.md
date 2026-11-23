@@ -42,6 +42,21 @@
 | `crrl` (2026-10-20 사용자 확인) | 사용자의 다른 시뮬레이션 강화학습 실험. CPU 코어 하나 100%, RAM 약 1.8GiB, 로봇과 무관. 세부 내용은 나중에 저장소를 공개할 것에 대비해 여기에 적지 않음 |
 | 두 번째 노트북 (2026-10-19 사용자 확인) | RTX 4060 Laptop 8GB, RAM 약 15.3GiB, Windows 11, 드라이버 546.32. 확인 당시 다른 GPU 작업 중. Windows라서 vLLM 공식 지원이 없고 WSL2에서는 USB 카메라가 기본으로 잡히지 않음 → 이 연구에는 쓰지 않기로 함 (듀얼부팅 불필요) |
 
+## 3b. 현재 실험 노트북: 2026-11-23 시스템 체크 결과 (어시스턴트가 노트북에서 직접 실행)
+3a절의 노트북과 **다른 기기**입니다(우분투 새로 설치). 3a절의 GPU·RAM 수치는 더 이상 맞지 않습니다.
+
+| 항목 | 값 |
+|---|---|
+| 기종 / OS / 커널 | HP OMEN 16-ap0111AX, Ubuntu 24.04.5 LTS, 커널 7.0.0 (HWE), Xorg |
+| GPU | **RTX 5070 Laptop 8GB (8151 MiB)**, Blackwell `sm_120`, 드라이버 580.178.04 (CUDA 13.0) |
+| RAM / 디스크 | **30GiB** (점검 때 사용 가능 약 24GiB), NVMe 512GB 중 여유 약 390GB |
+| 저장소 / 환경 | `~/research/hil-review` (.venv, Python 3.14), conda `lerobot` (Python 3.12, torch 2.11.0+cu130, LeRobot `8c920c42` 수정 없음, 옵션 feetech·gamepad·hilserl·core_scripts·training, ffmpeg 7.1.1, wandb 0.27.2), conda `vlm` (vLLM, LeRobot과 분리) |
+| 장치 고정 이름 | `configs/udev/99-hil-review.rules`: `/dev/so101_leader`(시리얼 5AE6086427), `/dev/so101_follower`(5AE6083026), `/dev/cam_front`(C270, 046d:0825), `/dev/cam_wrist`(0bda:5844). USB 포트 교차·재부팅 후에도 유지 확인. 카메라 두 대는 시리얼이 같아(200901010001) 제조사·모델 ID로 구분 |
+| 게임패드 | F310 D 모드("Logitech Dual Action"), `scripts/check_gamepad.py` 15/15 통과 (버튼 6개, 스틱 8방향 부호·끝까지, 중립 ±0.004) |
+| 로봇 팔 | `scripts/check_arms.py` 6/6 통과. 리더 5.2V, 팔로워 12.4V, 오류 비트 없음. 캘리브레이션 id `hil_leader`, `hil_follower` |
+| 카메라 | front(천장, 포토박스)·wrist 640×480 약 24fps. wrist는 그리퍼 끝이 보이지 않지만 집기 직전·잡은 상태의 물체가 보임. 두 카메라 모두 자동 노출·자동 화이트밸런스 켜짐(물체·조명 확정 후 고정 예정) |
+| URDF | `~/SO-ARM100/Simulation/SO101/so101_new_calib.urdf` (TheRobotStudio/SO-ARM100 `141aea7`). 끝단 이름은 `gripper_frame_link` (기본값 `gripper`는 그리퍼 관절 위치라 약 10cm 다름) |
+
 ## 3. 사용자 하드웨어에 대한 미확인 가정 (일부는 3a절에서 확인됨)
 
 - ~~GPU 모델·VRAM이 8GB인지 12GB인지~~ → **확인됨: RTX 5070 Ti Laptop, 12GB** (3a절).
