@@ -94,7 +94,8 @@ def cmd_vlm_label(a) -> int:
         print(f"에피소드들의 데이터 종류가 섞여 있습니다: {sorted(k.value for k in kinds)}")
         return 2
     cfg = OpenAICompatConfig(base_url=a.base_url, model=a.model, api_key_env=a.api_key_env, timeout_s=a.timeout,
-                             camera_order=tuple(a.cameras.split(",")) if a.cameras else ())
+                             camera_order=tuple(a.cameras.split(",")) if a.cameras else (),
+                             disable_thinking=a.no_thinking)
     lab = OpenAICompatVLMLabeler(cfg, task=a.task, data_kind=kinds.pop(), allow_remote_host=a.allow_remote_host)
     todo = [kf for e in eps if e.eligible for kf in kfs.get(e.episode_id, []) if kf.auto_valid
             and kf.sample_id not in done]
@@ -191,7 +192,8 @@ def cmd_vlm_check(a) -> int:
     from hilreview.labeling.vlm import OpenAICompatConfig, OpenAICompatVLMLabeler
     from hilreview.review.demo import _render
 
-    cfg = OpenAICompatConfig(base_url=a.base_url, model=a.model, timeout_s=a.timeout)
+    cfg = OpenAICompatConfig(base_url=a.base_url, model=a.model, timeout_s=a.timeout,
+                             disable_thinking=a.no_thinking)
     try:
         lab = OpenAICompatVLMLabeler(cfg, task="put the red cube into the blue container",
                                      allow_remote_host=a.allow_remote_host)
@@ -210,9 +212,11 @@ def cmd_vlm_check(a) -> int:
     results = []
     with tempfile.TemporaryDirectory() as td:
         for i, (state, hover) in enumerate([("S", False), ("F", True), ("F", False)]):
-            img = f"{td}/front_{i}.png"
-            _render(state, hover, False, 0.5).save(img)
-            kf = Keyframe(make_sample_id("vlmcheck", i), "vlmcheck", i, float(i), {"front": img})
+            refs = {}
+            for cam in ("front", "wrist")[:a.n_images]:  # real labeling sends one image per camera
+                refs[cam] = f"{td}/{cam}_{i}.png"
+                _render(state, hover, False, 0.5).save(refs[cam])
+            kf = Keyframe(make_sample_id("vlmcheck", i), "vlmcheck", i, float(i), refs)
             results.append((state, hover, lab.suggest_one(kf)))
     ok = [s for _, _, s in results if s.status == "ok"]
     print(f"[2/3] 응답 해석: {len(ok)}/3 성공")
@@ -350,6 +354,53 @@ def cmd_classifier_config(a) -> int:
     return 0
 
 
+def _report_hilserl(cfg: dict, online: bool, path: str, kind: str) -> None:
+    from hilreview.robot.hilserl_config import blinding_leaks, missing_fields, validate_with_lerobot
+
+    miss = missing_fields(cfg, online)
+    leaks = blinding_leaks(cfg) if online else []
+    for k, why in miss.items():
+        print(f"  아직 비어 있음 (로봇 실행 전 필수): {k} -> {why}")
+    for lk in leaks:
+        print(f"  블라인드 위험 (조건 이름이 화면에 출력됨): {lk}")
+    try:
+        import lerobot  # noqa: F401
+    except ImportError:
+        print("  (lerobot이 없는 환경이라 LeRobot 설정 파싱은 건너뜀)")
+        return
+    validate_with_lerobot(path, kind)
+    print("  LeRobot 설정 파싱: OK")
+
+
+def cmd_hilserl_config(a) -> int:
+    from hilreview.robot.hilserl_config import load_json, make_record_config, make_train_config
+
+    env = load_json(a.env_base)
+    if a.kind == "record":
+        cfg = make_record_config(env, a.repo_id, a.root, a.num_episodes)
+    else:
+        if not a.run_id:
+            raise SystemExit("--kind train에는 --run-id (블라인드 순서표의 ID)가 필요합니다")
+        cfg = make_train_config(env, load_json(a.train_base), run_id=a.run_id, seed=a.seed, runs_root=a.runs_root,
+                                classifier_dir=a.classifier, demos_root=a.demos_root)
+    Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+    Path(a.out).write_text(json.dumps(cfg, indent=2))
+    print(f"HIL-SERL {a.kind} 설정 -> {a.out}")
+    _report_hilserl(cfg, a.kind == "train", a.out, a.kind)
+    return 0
+
+
+def cmd_hilserl_check(a) -> int:
+    from hilreview.robot.hilserl_config import assert_only_allowed_differences, blinding_leaks, load_json
+
+    cfgs = [load_json(p) for p in a.configs]
+    assert_only_allowed_differences(cfgs)
+    print(f"설정 {len(cfgs)}개: 허용된 필드(시드, 출력 폴더, 작업 이름, 시연 데이터, 분류기 경로) 밖의 차이 없음")
+    leaks = [lk for c in cfgs for lk in blinding_leaks(c)]
+    print("블라인드 위험: " + ("없음" if not leaks else str(leaks)))
+    return 1 if leaks else 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="hilreview", description=__doc__)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -384,6 +435,8 @@ def build_parser() -> argparse.ArgumentParser:
     v.add_argument("--split-file")
     v.add_argument("--splits", default="train,val,audit")
     v.add_argument("--limit", type=int, default=None, help="label at most N new keyframes (pilot runs)")
+    v.add_argument("--no-thinking", action="store_true",
+                   help="Qwen3.5 등 생각 모드 모델: enable_thinking=False로 요청 (질문문 버전에 +nothink 기록)")
     v.add_argument("--retry-errors", action="store_true", help="re-label samples whose latest record failed")
     v.add_argument("--allow-remote-host", action="store_true",
                    help="allow a non-local/non-LAN server (sends private robot images off your machines)")
@@ -429,6 +482,8 @@ def build_parser() -> argparse.ArgumentParser:
     vc.add_argument("--model", required=True)
     vc.add_argument("--timeout", type=float, default=120.0)
     vc.add_argument("--allow-remote-host", action="store_true")
+    vc.add_argument("--no-thinking", action="store_true", help="Qwen3.5 등: enable_thinking=False로 요청")
+    vc.add_argument("--n-images", type=int, default=2, choices=[1, 2], help="요청당 이미지 수 (실제 = 카메라 수)")
     vc.set_defaults(fn=cmd_vlm_check)
 
     lg = sub.add_parser("log-episodes", help="실제 로봇 실행 중 에피소드 결과 기록 (글자 2개 입력)")
@@ -538,6 +593,25 @@ def build_parser() -> argparse.ArgumentParser:
     cc.add_argument("--device", default="cuda")
     cc.add_argument("--num-workers", type=int, default=4)
     cc.set_defaults(fn=cmd_classifier_config)
+
+    hc = sub.add_parser("hilserl-config", help="HIL-SERL 녹화/온라인 설정 생성 (공통 기본 파일에서, D-38)")
+    hc.add_argument("--kind", required=True, choices=["record", "train"])
+    hc.add_argument("--env-base", default="configs/hilserl/env_base.json")
+    hc.add_argument("--train-base", default="configs/hilserl/train_base.json")
+    hc.add_argument("--out", required=True)
+    hc.add_argument("--repo-id", default="hil/demos", help="[record] 녹화 데이터셋 이름")
+    hc.add_argument("--root", default=None, help="[record] 녹화 데이터셋 폴더 (아직 없어야 함)")
+    hc.add_argument("--num-episodes", type=int, default=20, help="[record]")
+    hc.add_argument("--run-id", default=None, help="[train] 블라인드 순서표의 실행 ID (조건 이름 금지)")
+    hc.add_argument("--seed", type=int, default=1000, help="[train]")
+    hc.add_argument("--runs-root", default="~/research/runs", help="[train] <run_id>/classifier, demos 바로가기 위치")
+    hc.add_argument("--classifier", default=None, help="[train] 조건의 분류기 pretrained_model 폴더")
+    hc.add_argument("--demos-root", default=None, help="[train] 조건의 재라벨된 시연 데이터 폴더")
+    hc.set_defaults(fn=cmd_hilserl_config)
+
+    hk = sub.add_parser("hilserl-check", help="온라인 실행 설정들이 허용된 필드만 다른지 + 블라인드 점검")
+    hk.add_argument("configs", nargs="+")
+    hk.set_defaults(fn=cmd_hilserl_check)
     return p
 
 

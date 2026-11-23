@@ -284,3 +284,19 @@ LeRobot `8c920c42` 코드를 다시 읽고, 노트북에서 실제 `ReplayBuffer
 - **`build-reward-dataset`이 val 라벨까지 학습 데이터에 넣던 문제.** 라벨 파일은 풀(train + val)을 담는데, 전부 학습 데이터로 들어갔습니다. val은 보조 분석의 임계값 선택(D-09)에 쓰므로 학습하면 안 됩니다. → `--split-file`을 필수로 받고 기본값으로 train만 씁니다. audit은 어떤 경우에도 거부합니다.
 - 함께 확인: D-29 재라벨이 학습된 분류기 점수로 끝까지 돌았습니다. 시연 6개 모두 판정됐고, 5개는 정확히 "성공 시작 − 1" 전이에서, 1개는 한 전이 일찍(분류기가 거의 들어간 장면을 성공으로 봄) 끝났습니다.
 - 환경: `lerobot` 환경에 LeRobot `training` 옵션(accelerate 등)을 추가로 설치했습니다. torch·numpy·LeRobot 버전은 그대로입니다.
+
+## D-38 HIL-SERL 설정은 공통 기본 파일 2개에서 생성, 블라인드 경로, 녹화·온라인 조작 규칙 (2026-11-23)
+- **공통 기본 파일:** `configs/hilserl/env_base.json`(로봇, 카메라, 게임패드, 처리 단계)과 `configs/hilserl/train_base.json`(SAC, 정책). 출발점은 LeRobot 공식 예제(`lerobot/config_examples` rl/train_config.json)이고, 이 노트북에 맞게 바꾼 값은 다음과 같습니다.
+  - 장치 고정 이름(`/dev/so101_follower`, `/dev/cam_front`, `/dev/cam_wrist`), 캘리브레이션 id `hil_follower`, 끝단 `gripper_frame_link`, URDF 절대 경로
+  - fps 10 (PROTOCOL 키프레임 간격과 맞춤)
+  - 리플레이 버퍼를 **CPU에** 저장(`storage_device: cpu`; 예제는 GPU인데 8GB로는 불가). 용량은 온라인 25,000 + 오프라인 15,000 (128×128 카메라 2대 기준 약 15.7GB, RAM 30GiB에서 여유를 남김). **P3에서 RAM을 재 보고 확정**합니다.
+  - wandb 오프라인(D-36), 정책 정규화 통계는 예제처럼 **고정값**(이미지 ImageNet 평균·표준편차, 관절 ±180, 속도·전류 ±100, 동작 ±1) → 모든 조건 동일
+  - 아직 정하지 않은 값(예제·LeRobot 기본값 사용, P3 전 확인): 에피소드 20초, 리셋 대기 5초, 그리퍼 최대 100, 그리퍼 벌점 −0.02, 끝단 한 스텝 0.009/0.009/0.01m, discount 0.97, utd 2
+- **비워 둔 필수 값(로봇 실행 전 채움):** 잘라내기 영역, 끝단 작업 범위, 리셋 자세. `hilserl-config`가 비어 있는 값을 알려 줍니다.
+- **생성:** `hilreview hilserl-config --kind record|train`. 온라인 실행 사이에 달라도 되는 것은 시드, 출력 폴더, 작업 이름, 시연 데이터(조건별 재라벨), 분류기 경로뿐입니다. `hilreview hilserl-check <설정들>`이 이를 강제합니다.
+- **블라인드:** LeRobot은 시작할 때 설정 전체를 화면에 출력합니다. 그래서 이름과 경로에 조건이 드러나면 안 됩니다. 생성기는 순서표의 실행 ID만 쓰고, 분류기와 시연 데이터는 `~/research/runs/<실행 ID>/{classifier,demos}` 바로가기(심볼릭 링크)로 연결합니다. 조건 이름처럼 보이는 실행 ID는 거부하고, 설정 안에 조건 이름이 남아 있으면 경고합니다.
+- **확인:** 생성한 녹화·학습 설정을 LeRobot `8c920c42`의 설정 클래스로 파싱했고, 학습 설정은 `validate()`까지 통과했습니다(`tests/test_hilserl_config.py`). 실제 로봇·learner 실행은 P3에서 확인합니다.
+- **조작 규칙 (LeRobot 코드에서 확인, `InterventionActionProcessorStep`):**
+  1. Y(성공)를 누르면 그 스텝에서 에피소드가 **바로 끝납니다**. D-32의 "성공 뒤 약 2초 유지"는 **물체를 놓고 약 2초 기다린 다음 Y**를 누르는 것으로 합니다.
+  2. 녹화 모드에서도 로봇은 **RB를 누르고 있는 동안에만** 게임패드를 따릅니다. 데모 녹화 중에는 RB를 계속 누릅니다.
+  3. **온라인 학습 중에는 Y를 누르지 않습니다.** 누르면 보상 1이 더해지고 에피소드가 끝나서 사람 보상이 섞입니다(조건 C 오염). 사람은 개입(RB)과 실패·중단만 합니다. 실수로 눌렀으면 `log-episodes`에 종료 이유 `k`(human_success_key)로 기록하고 따로 셉니다.

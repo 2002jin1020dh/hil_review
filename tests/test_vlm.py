@@ -193,3 +193,19 @@ def test_vlm_check_unreachable_and_remote(capsys):
     assert main(["vlm-check", "--base-url", "https://api.example.com/v1", "--model", "m"]) == 2
     out = capsys.readouterr().out
     assert "연결하지 못했습니다" in out and "중단" in out
+
+
+def test_disable_thinking_request_and_version_tag(tmp_path):
+    from PIL import Image
+
+    from hilreview.data.schema import Keyframe
+    from hilreview.labeling.vlm import PROMPT_VERSION, OpenAICompatConfig, OpenAICompatVLMLabeler
+
+    img = tmp_path / "f.png"
+    Image.new("RGB", (4, 4)).save(img)
+    kf = Keyframe("e/f000000", "e", 0, 0.0, {"front": str(img)})
+    plain = OpenAICompatVLMLabeler(OpenAICompatConfig(), task="t")
+    assert "chat_template_kwargs" not in plain.build_request(kf) and plain.prompt_version == PROMPT_VERSION
+    nt = OpenAICompatVLMLabeler(OpenAICompatConfig(disable_thinking=True), task="t")
+    assert nt.build_request(kf)["chat_template_kwargs"] == {"enable_thinking": False}
+    assert nt.prompt_version == PROMPT_VERSION + "+nothink"

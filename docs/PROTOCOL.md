@@ -70,7 +70,7 @@
 8. 조건과 학습 시드마다 `hilreview build-reward-dataset --split-file splits.json`(train만) → `hilreview classifier-config`(VISUAL=IDENTITY, D-37) → `lerobot-train --config_path=<설정>`(보상 분류기)을 실행합니다. 분류기 설정, 스텝 수, 시드는 **모든 조건에서 같게** 합니다.
 9. val과 audit 키프레임에 `hilreview score`를 실행하고, `classifier_scores`를 넣어 7번을 다시 실행합니다. 그러면 audit 지표, termination replay, 짝지은 비교가 나옵니다.
    - 9-1. 조건마다 시연 데이터(train의 `success_attempt` 에피소드 전부)의 보상을 그 조건의 분류기로 다시 매깁니다(D-29, 규칙 수정 D-35): `hilreview score-frames` → `hilreview relabel-demos`. `--threshold`/`--success-reward`는 온라인 설정과 같은 값.
-10. 블라인드 순서표대로 온라인 HIL-SERL을 실행합니다(6절). 이때 다른 무거운 작업은 돌리지 않습니다(D-33).
+10. 블라인드 순서표대로 온라인 HIL-SERL을 실행합니다(6절). 설정은 실행마다 `hilreview hilserl-config --kind train --run-id <ID>`로 만들고, 전체를 `hilreview hilserl-check`로 확인합니다(D-38). **온라인 중에는 Y(성공) 버튼을 누르지 않습니다**(D-38). 이때 다른 무거운 작업은 돌리지 않습니다(D-33).
 11. 블라인드를 풀고 요약합니다: `hilreview online-summary`.
 
 이 순서와 달라진 점은 날짜와 이유를 적어 `results/real/DEVIATIONS.md`에 기록합니다.

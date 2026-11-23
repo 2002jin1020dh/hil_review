@@ -206,6 +206,9 @@ class OpenAICompatConfig:
     request_logprobs: bool = True
     top_logprobs: int = 5
     camera_order: tuple[str, ...] = field(default_factory=tuple)  # empty = sorted camera names
+    # Qwen3.5 thinks by default (<think>...</think> before the answer), which breaks first-token yes/no logprobs.
+    # True -> send chat_template_kwargs={"enable_thinking": False} (vLLM/SGLang) and tag prompt_version "+nothink".
+    disable_thinking: bool = False
 
 
 def _data_url(path: str | Path) -> str:
@@ -252,7 +255,7 @@ class OpenAICompatVLMLabeler:
         self.success_definition = success_definition
         self.data_kind = DataKind(data_kind)
         self.model_id = cfg.model
-        self.prompt_version = PROMPT_VERSION
+        self.prompt_version = PROMPT_VERSION + ("+nothink" if cfg.disable_thinking else "")
 
     def _headers(self) -> dict[str, str]:
         h = {"Content-Type": "application/json"}
@@ -280,6 +283,8 @@ class OpenAICompatVLMLabeler:
         if self.cfg.request_logprobs:
             req["logprobs"] = True
             req["top_logprobs"] = self.cfg.top_logprobs
+        if self.cfg.disable_thinking:
+            req["chat_template_kwargs"] = {"enable_thinking": False}
         return req
 
     def suggest_one(self, kf: Keyframe) -> VLMSuggestion:
